@@ -154,13 +154,27 @@ function observersTxt(feature) {
 
 // Popup Point
 function onEachFeaturePoint(feature, layer) {
+  if(feature.properties.diffusion_level == 1) {
   popupContent =
-    "<b>Date: </b>" +
-    feature.properties.dateobs +
-    "</br><b>Altitude: </b>" +
-    feature.properties.altitude_retenue +
+        "<b>Date: </b>" + new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+        "</br><b>Floutage: </b> Commune" +
+        observersTxt(feature);
+  } else if (feature.properties.diffusion_level == 2) {
+        popupContent =
+        "<b>Date: </b>" + new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+        "</br><b>Floutage: </b> Maille 10km x 10km" +
+        observersTxt(feature);
+  } else if (feature.properties.diffusion_level >= 3) {
+        popupContent =
+        "<b>Date: </b>" + new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+        "</br><b>Floutage: </b> Département" +
+        observersTxt(feature);
+  } else {
+    popupContent =
+    "<b>Date: </b>" + new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Altitude: </b>" +  feature.properties.altitude_retenue +
     observersTxt(feature)
-
+  }
   // verifie si le champs effectif est rempli
   if (feature.properties.effectif_total != undefined) {
     layer.bindPopup(
@@ -185,34 +199,164 @@ function onEachFeatureMaille(feature, layer) {
 }
 
 // Style maille
+// function getColor(d) {
+//   return d > 100
+//     ? "#800026"
+//     : d > 50
+//     ? "#BD0026"
+//     : d > 20
+//     ? "#E31A1C"
+//     : d > 10
+//     ? "#FC4E2A"
+//     : d > 5
+//     ? "#FD8D3C"
+//     : d > 2
+//     ? "#FEB24C"
+//     : d > 1
+//     ? "#FED976"
+//     : "#FFEDA0";
+// }
+// ECHELLE DE JAUNE à VERT
+/*
 function getColor(d) {
   return d > 100
-    ? "#800026"
+    ? "#005600"
     : d > 50
-    ? "#BD0026"
+    ? "#246e19"
     : d > 20
-    ? "#E31A1C"
+    ? "#498632"
     : d > 10
-    ? "#FC4E2A"
+    ? "#6d9f4b"
     : d > 5
-    ? "#FD8D3C"
+    ? "#92b764"
     : d > 2
-    ? "#FEB24C"
+    ? "#b6cf7e"
     : d > 1
+    ? "#dbe797"
+    : "#ffffb0";
+}
+
+function getColor(nb,dl) {
+  if (dl >= 1) {
+    return nb > 100
+    ? "#8B0000"
+    : nb > 50
+    ? "#B22222"
+    : nb > 20
+    ? "#DC143C"
+    : nb > 10
+    ? "#CD5C5C"
+    : nb > 5
+    ? "#F08080"
+    : nb > 2
+    ? "#E9967A"
+    : nb > 1
+    ? "#FFA07A"
+    : "#00fed8";
+  } else {
+    return nb > 100
+    ? "#a200ff"
+    : nb > 50
+    ? "#8a24fa"
+    : nb > 20
+    ? "#7348f4"
+    : nb > 10
+    ? "#5c6def"
+    : nb > 5
+    ? "#4591e9"
+    : nb > 2
+    ? "#2eb6e3"
+    : nb > 1
+    ? "#17dade"
+    : "#00fed8";
+  }
+}
+
+
+
+// ECHELLE DE BLUE A VIOLET (biodiv 2023)
+function getColor(nb,dl) {
+  if (dl >= 1) {
+    return nb > 100
+    ? "#8B0000"
+    : nb > 50
+    ? "#B22222"
+    : nb > 20
+    ? "#DC143C"
+    : nb > 10
+    ? "#CD5C5C"
+    : nb > 5
+    ? "#F08080"
+    : nb > 2
+    ? "#E9967A"
+    : nb > 1
+    ? "#FFA07A"
+    : "#FFBDA2";
+  } else {
+    return nb > 100
+    ? "#a200ff"
+    : nb > 50
+    ? "#8a24fa"
+    : nb > 20
+    ? "#7348f4"
+    : nb > 10
+    ? "#5c6def"
+    : nb > 5
+    ? "#4591e9"
+    : nb > 2
+    ? "#2eb6e3"
+    : nb > 1
+    ? "#17dade"
+    : "#00fed8";
+  }
+}
+*/
+function getColor(nb,dl) {
+    if (dl >= 1) {
+        return nb > 100
+    ? "#800026"
+        : nb > 50
+    ? "#BD0026"
+        : nb > 20
+    ? "#E31A1C"
+        : nb > 10
+    ? "#FC4E2A"
+        : nb > 5
+    ? "#FD8D3C"
+        : nb > 2
+    ? "#FEB24C"
+        : nb > 1
+        ? "#FED976"
+        : "#FFEDA0";
+    } else {
+        return nb > 100
+        ? "#800026"
+        : nb > 50
+        ? "#BD0026"
+        : nb > 20
+        ? "#E31A1C"
+        : nb > 10
+        ? "#FC4E2A"
+        : nb > 5
+        ? "#FD8D3C"
+        : nb > 2
+        ? "#FEB24C"
+        : nb > 1
     ? "#FED976"
     : "#FFEDA0";
+  }
 }
 
 function styleMaille(feature) {
   return {
-    fillColor: getColor(feature.properties.nb_observations),
+    fillColor: getColor(feature.properties.nb_observations,feature.properties.diffusion_level),
     weight: 1,
     color: mailleBorderColor,
-    fillOpacity: 0.8,
+    fillOpacity: 0.9,
   };
 }
 
-function generateLegendMaille() {
+function generateLegendMaille(diff_level) {
   // check if contour already exists
   if (L.DomUtil.get("contour-legend")) {
     return
@@ -226,7 +370,7 @@ function generateLegendMaille() {
     for (var i = 0; i < grades.length; i++) {
       grade_n1 = grades[i + 1] ? `&ndash; ${grades[i + 1] } <br>` : "+"
       labels.push(
-        `<i style="background: ${getColor(grades[i] + 1)}"></i>
+        `<i style="background: ${getColor(grades[i] + 1,diff_level)}"></i>
           ${grades[i]}${grade_n1}
         `
       );
@@ -254,6 +398,7 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
         id_maille: idMaille,
         nb_observations: 1,
         last_observation: observations[i].annee,
+        diffusion_level: observations[i].diffusion_level, // MODIF JEROME
         tabDateobs: [new Date(observations[i].dateobs)],
       };
       var j = i + 1;
@@ -297,7 +442,7 @@ function displayMailleLayerFicheEspece(observationsMaille) {
   // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
 
   // ajout de la légende
-  generateLegendMaille();
+  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
 }
 
 function generateGeojsonGridArea(observations) {
@@ -311,6 +456,7 @@ function generateGeojsonGridArea(observations) {
       id_maille: idMaille,
       nb_observations: 1,
       last_observation: observations[i].annee,
+      diffusion_level: observations[i].diffusion_level // MODIF JEROME
     };
     var j = i + 1;
     while (j < observations.length && observations[j].id_maille <= idMaille) {
@@ -343,7 +489,7 @@ function displayGridLayerArea(observations) {
   map.fitBounds(currentLayer.getBounds());
 
   // ajout de la légende
-  generateLegendMaille();
+  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
 }
 
 // GeoJson Point
@@ -423,13 +569,43 @@ function displayMarkerLayerFicheEspece(
 /* *** Point ****/
 
 function onEachFeaturePointLastObs(feature, layer) {
+  if(feature.properties.diffusion_level == 1) {
   popupContent =
     "<b>Espèce: </b>" +
     feature.properties.taxon +
     "</br><b>Date: </b>" +
-    feature.properties.dateobs +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Commune";
+  } else if (feature.properties.diffusion_level == 2) {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Maille 10km x 10km";
+  } else if (feature.properties.diffusion_level >= 3) {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Département";
+  } else {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
     "</br><b>Altitude: </b>" +
-    feature.properties.altitude_retenue;
+    feature.properties.altitude_retenue +
+    observersTxt(feature);
+  }
 
   layer.bindPopup(
     popupContent +
@@ -444,14 +620,43 @@ function onEachFeaturePointLastObs(feature, layer) {
 }
 
 function onEachFeaturePointCommune(feature, layer) {
-  popupContent =
+  if(feature.properties.diffusion_level == 1) {
+    popupContent =
     "<b>Espèce: </b>" +
     feature.properties.taxon +
     "</br><b>Date: </b>" +
-    feature.properties.dateobs +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Commune";
+  } else if (feature.properties.diffusion_level == 2) {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Maille 10km x 10km";
+  } else if (feature.properties.diffusion_level >= 3) {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
+    "</br><b>Observateurs: </b>" +
+    feature.properties.observateurs +
+    "</br><b>Floutage: </b> Département";
+  } else {
+    popupContent =
+    "<b>Espèce: </b>" +
+    feature.properties.taxon +
+    "</br><b>Date: </b>" +
+    new Date(feature.properties.dateobs).toLocaleDateString('fr-FR') +
     "</br><b>Altitude: </b>" +
     feature.properties.altitude_retenue +
-    observersTxt(feature)
+    observersTxt(feature);
+  }
 
   layer.bindPopup(
     popupContent +
@@ -470,6 +675,7 @@ function generateGeojsonPointLastObs(observationsPoint) {
     properties = obs;
     properties["dateobsCompare"] = new Date(obs.dateobs);
     properties["dateobs"] = obs.dateobs;
+    properties["diffusion_level"] = obs.diffusion_level;
     properties["nb_observations"] = 1;
     myGeoJson.features.push({
       type: "Feature",

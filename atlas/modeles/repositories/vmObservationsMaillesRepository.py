@@ -16,6 +16,7 @@ def getObservationsMaillesChilds(session, cd_ref, year_min=None, year_max=None):
     query = (
         session.query(
             func.count(VmObservationsMailles.id_observation).label("nb_obs"),
+            func.max(VmObservationsMailles.diffusion_level).label("diffusion_level"),   # MODIF JEROME
             func.max(VmObservationsMailles.annee).label("last_observation"),
             VmObservationsMailles.id_maille,
             VmObservationsMailles.geojson_maille,
@@ -37,6 +38,7 @@ def getObservationsMaillesChilds(session, cd_ref, year_min=None, year_max=None):
                     "id_maille": o.id_maille,
                     "nb_observations": o.nb_obs,
                     "last_observation": o.last_observation,
+                    "diffusion_level": o.diffusion_level       # MODIF JEROME
                 },
             )
             for o in query.all()

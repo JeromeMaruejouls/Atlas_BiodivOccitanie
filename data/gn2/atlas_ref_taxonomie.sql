@@ -7,7 +7,7 @@
 CREATE SCHEMA IF NOT EXISTS taxonomie;
 
 IMPORT FOREIGN SCHEMA taxonomie
-LIMIT TO (taxonomie.taxref, taxonomie.cor_taxon_attribut, taxonomie.t_medias)
+LIMIT TO (taxonomie.taxref, taxonomie.cor_taxon_attribut, taxonomie.t_medias, taxonomie.bdc_statut_occitanie_pour_atlas)
 FROM SERVER geonaturedbserver INTO taxonomie ;
 
 ALTER TABLE taxonomie.taxref OWNER TO myuser;
