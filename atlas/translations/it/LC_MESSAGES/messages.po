@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-19 09:40+0000\n"
+"POT-Creation-Date: 2025-06-19 13:57+0000\n"
 "PO-Revision-Date: 2021-07-19 09:53+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -18,65 +18,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
+#: static/custom/templates/bandeaulogoshome.html:6
 #: static/custom/templates/bandeaulogoshome.html.sample:6
 msgid "home.partners"
 msgstr "Partner"
 
+#: static/custom/templates/footer.html:2
 #: static/custom/templates/footer.html.sample:2 templates/home/_main.html:3
 msgid "home"
 msgstr "Home"
 
+#: static/custom/templates/footer.html:5 static/custom/templates/footer.html:24
 #: static/custom/templates/footer.html.sample:5
 #: static/custom/templates/footer.html.sample:24
 msgid "credits"
 msgstr "Concezione e crediti"
 
+#: static/custom/templates/footer.html:7 static/custom/templates/footer.html:41
 #: static/custom/templates/footer.html.sample:7
 #: static/custom/templates/footer.html.sample:41
 msgid "legal"
 msgstr "Nota legale"
 
+#: static/custom/templates/footer.html:12
 #: static/custom/templates/footer.html.sample:12
 msgid "atlas.fauna.flora"
 msgstr "Atlante della flora e della fauna"
 
+#: static/custom/templates/footer.html:12
 #: static/custom/templates/footer.html.sample:12
+#: static/custom/templates/introduction.html:7
 #: static/custom/templates/introduction.html.sample:7
 msgid "from1"
 msgstr "di"
 
+#: static/custom/templates/footer.html:14
 #: static/custom/templates/footer.html.sample:14
 msgid "powered.by"
 msgstr "Realizzato da"
 
+#: static/custom/templates/footer.html:14
 #: static/custom/templates/footer.html.sample:14
 msgid "developed.by"
 msgstr "sviluppato da il"
 
+#: static/custom/templates/footer.html:15
 #: static/custom/templates/footer.html.sample:15
 msgid "ecrins.national.park"
 msgstr "Parco Nazionale degli Ecrins"
 
+#: static/custom/templates/introduction.html:6
 #: static/custom/templates/introduction.html.sample:6
 msgid "welcome.message"
 msgstr "Benvenuti nell'atlante della fauna e della flora"
 
+#: static/custom/templates/introduction.html:7
 #: static/custom/templates/introduction.html.sample:7
 msgid "from2"
 msgstr "di"
 
+#: static/custom/templates/introduction.html:7
 #: static/custom/templates/introduction.html.sample:7
 msgid "from3"
 msgstr "del"
 
+#: static/custom/templates/introduction.html:7
 #: static/custom/templates/introduction.html.sample:7
 msgid "from4"
 msgstr "del"
 
+#: static/custom/templates/introduction.html:7
 #: static/custom/templates/introduction.html.sample:7
 msgid "from5"
 msgstr "del"
 
+#: static/custom/templates/introduction.html:11
 #: static/custom/templates/introduction.html.sample:11
 msgid "home.introduction.message"
 msgstr ""
@@ -88,16 +104,19 @@ msgstr ""
 "tratta di un inventario esaustivo né di una distribuzione completa delle "
 "specie nel territorio."
 
+#: static/custom/templates/navbar.html:34
 #: static/custom/templates/navbar.html.sample:34
 #: templates/home/globalStats.html:35 templates/photoGalery/_main.html:77
 msgid "search.species"
 msgstr "Cerca per species"
 
+#: static/custom/templates/navbar.html:47
 #: static/custom/templates/navbar.html.sample:47
 #: templates/home/globalStats.html:55
 msgid "search.city"
 msgstr "Ricerca per comune"
 
+#: static/custom/templates/presentation.html:4
 #: static/custom/templates/presentation.html.sample:4
 msgid "atlas.presentation"
 msgstr "Presentazione dell'atlante"
