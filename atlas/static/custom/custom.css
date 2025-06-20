@@ -1,0 +1,23 @@
+/* Insert your custom override CSS in this file */
+
+:root {
+    --main-color: #82c91e;
+    --second-color: #649b18;
+    --map-maille-border-color: "black";
+}
+
+/** Badges **/
+  .caractEspece {
+    width: auto;
+    height: 30px;
+    border: thick double #32a1ce;
+}
+
+/** Fenetre modale taxons inférieurs **/
+  .modal-dialog {
+    max-width: 1200px;
+  }
+
+  .modal-header {
+    display: block;
+  }
