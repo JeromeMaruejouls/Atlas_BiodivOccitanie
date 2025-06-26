@@ -199,7 +199,7 @@ function onEachFeatureMaille(feature, layer) {
 }
 
 // popup Maille Last Obs
-function onEachFeatureMailleLastObs(feature, layer) {
+function onEachFeatureMailleLastObsFicheEsp(feature, layer) {
   popupContent =
     "<b>Année de dernière observation: </b>" +
     feature.properties.last_observation;
@@ -478,7 +478,7 @@ function displayMailleLayerFicheEspece(observationsMaille) {
 function displayMailleLastObsLayerFicheEspece(observationsMaille) {
   myGeoJson = observationsMaille;
   currentLayer = L.geoJson(myGeoJson, {
-    onEachFeature: onEachFeatureMailleLastObs,
+    onEachFeature: onEachFeatureMailleLastObsFicheEsp,
     style: styleMailleLastObsFicheEsp,
   });
   currentLayer.addTo(map);
