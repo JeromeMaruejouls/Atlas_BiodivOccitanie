@@ -198,6 +198,14 @@ function onEachFeatureMaille(feature, layer) {
   layer.bindPopup(popupContent);
 }
 
+// popup Maille Last Obs
+function onEachFeatureMailleLastObs(feature, layer) {
+  popupContent =
+    "<b>Année de dernière observation: </b>" +
+    feature.properties.last_observation;
+  layer.bindPopup(popupContent);
+}
+
 // Style maille
 // function getColor(d) {
 //   return d > 100
@@ -356,6 +364,28 @@ function styleMaille(feature) {
   };
 }
 
+
+function getColorLastObs(last_obs) {
+    return last_obs == 2025 ? "#800026"
+        : last_obs == 2024 ? "#BD0026"
+        : last_obs >= 2022 ? "#E31A1C"
+        : last_obs >= 2020 ? "#FC4E2A"
+        : last_obs >= 2015 ? "#FD8D3C"
+        : last_obs >= 2005 ? "#FEB24C"
+        : last_obs >= 1990 ? "#FED976"
+        : "#FFEDA0";
+    } 
+
+function styleMailleLastObsFicheEsp(feature) {
+  return {
+    fillColor: getColorLastObs(feature.properties.last_observation),
+    weight: 1,
+    color: mailleBorderColor,
+    fillOpacity: 0.9,
+  };
+}
+
+
 function generateLegendMaille(diff_level) {
   // check if contour already exists
   if (L.DomUtil.get("contour-legend")) {
@@ -437,6 +467,19 @@ function displayMailleLayerFicheEspece(observationsMaille) {
   currentLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMaille,
     style: styleMaille,
+  });
+  currentLayer.addTo(map);
+  // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
+
+  // ajout de la légende
+  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
+}
+
+function displayMailleLastObsLayerFicheEspece(observationsMaille) {
+  myGeoJson = observationsMaille;
+  currentLayer = L.geoJson(myGeoJson, {
+    onEachFeature: onEachFeatureMailleLastObs,
+    style: styleMailleLastObsFicheEsp,
   });
   currentLayer.addTo(map);
   // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
@@ -912,7 +955,7 @@ function generateSliderOnMap() {
     },
 
     onAdd: function (map) {
-      sliderContainer = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-slider-control');
+      var sliderContainer = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-slider-control');
 
       sliderContainer.style.backgroundColor = "white";
       sliderContainer.style.width = "300px";
