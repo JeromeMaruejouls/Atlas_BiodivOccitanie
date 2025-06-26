@@ -49,11 +49,11 @@ $.ajax({
   // pointer on first and last obs
   $(".pointer").css("cursor", "pointer");
   //display nb observations
-  lastObs = 0;
+  lastyear = 0;
   myGeoJson.features.forEach(function(l) {
-    lastObs == l.properties.last_observation;
+    lastyear == l.properties.lastyear;
   });
-  $("#nbObs").html("Nombre d'observation(s): " + lastObs);
+  $("#nbObs").html("Nombre d'observation(s): " + lastyear);
 
   // Slider event
 
@@ -81,12 +81,12 @@ $.ajax({
       map.off("zoomend", function() {});
 
       displayMailleLastObsLayerFicheEspece(observationsMaille);
-      lastObs = 0;
+      lastyear = 0;
       observationsMaille.features.forEach(function(l) {
-        lastObs += l.properties.lastObs;
+        lastyear += l.properties.lastyear;
       });
 
-      $("#nbObs").html("last_observation: " + last_observation);
+      $("#nbObs").html("Dernière année : " + lastyear);
       $("#yearMin").html(yearMin + "&nbsp;&nbsp;&nbsp;&nbsp;");
       $("#yearMax").html("&nbsp;&nbsp;&nbsp;&nbsp;" + yearMax);
     });

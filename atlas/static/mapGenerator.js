@@ -202,7 +202,7 @@ function onEachFeatureMaille(feature, layer) {
 function onEachFeatureMailleLastObsFicheEsp(feature, layer) {
   popupContent =
     "<b>Année de dernière observation: </b>" +
-    feature.properties.last_observation;
+    feature.properties.lastyear;
   layer.bindPopup(popupContent);
 }
 
@@ -378,7 +378,7 @@ function getColorLastObs(last_obs) {
 
 function styleMailleLastObsFicheEsp(feature) {
   return {
-    fillColor: getColorLastObs(feature.properties.last_observation),
+    fillColor: getColorLastObs(feature.properties.lastyear),
     weight: 1,
     color: mailleBorderColor,
     fillOpacity: 0.9,
