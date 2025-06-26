@@ -45,6 +45,38 @@ def getObservationsMaillesChilds(session, cd_ref, year_min=None, year_max=None):
         ]
     )
 
+#Maille avec date de derniere obs seulement
+def getObservationsMaillesLastObsChilds(session, cd_ref):
+
+    subquery = session.query(func.atlas.find_all_taxons_childs(cd_ref))
+    query = (
+        session.query(
+            func.count(VmObservationsMailles.id_observation).label("nb_obs"),
+            func.max(VmObservationsMailles.diffusion_level).label("diffusion_level"),   # MODIF JEROME
+            func.max(VmObservationsMailles.annee).label("last_observation"),
+            VmObservationsMailles.id_maille,
+            VmObservationsMailles.geojson_maille,
+        )
+        .group_by(VmObservationsMailles.id_maille, VmObservationsMailles.geojson_maille)
+        .filter(
+            or_(VmObservationsMailles.cd_ref.in_(subquery), VmObservationsMailles.cd_ref == cd_ref)
+        )
+    )
+
+    return FeatureCollection(
+        [
+            Feature(
+                id=o.id_maille,
+                geometry=json.loads(o.geojson_maille),
+                properties={
+                    "id_maille": o.id_maille,
+                    "nb_observations": 1,
+                    "lastyear": o.last_observation
+                },
+            )
+            for o in query.all()
+        ]
+    )
 
 # last observation for index.html
 def lastObservationsMailles(connection, mylimit, idPhoto):
