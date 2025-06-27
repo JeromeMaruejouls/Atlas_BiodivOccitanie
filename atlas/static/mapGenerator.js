@@ -367,12 +367,12 @@ function styleMaille(feature) {
 
 function getColorLastObs(last_obs) {
     return last_obs == 2025 ? "#800026"
-        : last_obs == 2024 ? "#BD0026"
-        : last_obs >= 2022 ? "#E31A1C"
-        : last_obs >= 2020 ? "#FC4E2A"
-        : last_obs >= 2015 ? "#FD8D3C"
-        : last_obs >= 2005 ? "#FEB24C"
-        : last_obs >= 1990 ? "#FED976"
+        : last_obs == 2023 ? "#BD0026"
+        : last_obs >= 2020 ? "#E31A1C"
+        : last_obs >= 2012 ? "#FC4E2A"
+        : last_obs >= 2000 ? "#FD8D3C"
+        : last_obs >= 1990 ? "#FEB24C"
+        : last_obs >= 1960 ? "#FED976"
         : "#FFEDA0";
     } 
 
@@ -393,7 +393,7 @@ function generateLegendMaille(diff_level) {
   }
   legend.onAdd = function (map) {
     var div = L.DomUtil.create("div", "info legend"),
-      grades = [0, 1, 2, 5, 10, 20, 50, 100],
+      grades = [0, 1960, 1990, 2000, 2012, 2020, 2023, 2025],
       labels = ["<strong> Nombre <br> d'observations </strong> <br>"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
