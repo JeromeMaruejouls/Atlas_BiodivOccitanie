@@ -415,6 +415,36 @@ function generateLegendMaille(diff_level) {
   legend.addTo(map);
 }
 
+
+function generateLegendMailleLastObs() {
+  // check if contour already exists
+  if (L.DomUtil.get("contour-legend")) {
+    return
+  }
+  legend.onAdd = function (map) {
+    var div = L.DomUtil.create("div", "info legend"),
+      dates = [0, 1995, 2000, 2010, 2015, 2022, 2024, 2025],
+      labels = ["<strong>Dernière année<br>d'observation</strong> <br>"];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < dates.length; i++) {
+      date_n1 = dates[i + 1] ? `&ndash; ${dates[i + 1] } <br>` : "+"
+      labels.push(
+        `<i style="background: ${getColor(dates[i] + 1,diff_level)}"></i>
+          ${dates[i]}${date_n1}
+        `
+      );
+    }
+    // Add id to get it above
+    div.id = "contour-legend"
+    div.innerHTML = labels.join("<br>");
+
+    return div;
+  };
+
+  legend.addTo(map);
+}
+
 // Geojson Maille
 function generateGeojsonMaille(observations, yearMin, yearMax) {
   var i = 0;
@@ -485,7 +515,7 @@ function displayMailleLastObsLayerFicheEspece(observationsMaille) {
   // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
 
   // ajout de la légende
-  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
+  generateLegendMailleLastObs()  // MODIF JEROME
 }
 
 function generateGeojsonGridArea(observations) {
