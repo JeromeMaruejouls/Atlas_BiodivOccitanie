@@ -55,7 +55,7 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
         return jsonify(observations)
     
     @api.route("/observationsMailleAndPointLastObs/<int:cd_ref>", methods=["GET"])
-    def getObservationsMailleAndPointAPI(cd_ref):
+    def getObservationsMailleAndPointLastObsAPI(cd_ref):
         """
         Retourne les observations d'un taxon en point et en maille
 
