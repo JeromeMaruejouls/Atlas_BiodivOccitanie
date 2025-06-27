@@ -101,7 +101,9 @@ $.ajax({
                         displayMailleLastObsLayerFicheEspece(observationsMaille);
                         lastyear = 0;
                         observationsMaille.features.forEach(function(l) {
-                            lastyear = l.properties.lastyear;
+                            if (lastyear < l.properties.lastyear) {
+                                lastyear = l.properties.lastyear;
+                            }
                         });
 
                         $("#nbObs").html("Dernière année d'observation : " + lastyear);

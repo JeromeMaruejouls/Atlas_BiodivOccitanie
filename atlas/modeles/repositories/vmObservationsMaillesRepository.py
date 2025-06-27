@@ -46,7 +46,7 @@ def getObservationsMaillesChilds(session, cd_ref, year_min=None, year_max=None):
     )
 
 #Maille avec date de derniere obs seulement
-def getObservationsMaillesLastObsChilds(session, cd_ref):
+def getObservationsMaillesLastObsChilds(session, cd_ref, year_min=None, year_max=None):
 
     subquery = session.query(func.atlas.find_all_taxons_childs(cd_ref))
     query = (
@@ -62,6 +62,8 @@ def getObservationsMaillesLastObsChilds(session, cd_ref):
             or_(VmObservationsMailles.cd_ref.in_(subquery), VmObservationsMailles.cd_ref == cd_ref)
         )
     )
+    if year_min and year_max:
+        query = query.filter(VmObservationsMailles.annee.between(year_min, year_max))
 
     return FeatureCollection(
         [
