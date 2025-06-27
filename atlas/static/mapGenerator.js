@@ -393,7 +393,7 @@ function generateLegendMaille(diff_level) {
   }
   legend.onAdd = function (map) {
     var div = L.DomUtil.create("div", "info legend"),
-      grades = [0, 1960, 1990, 2000, 2012, 2020, 2023, 2025],
+      grades = [0, 1, 2, 5, 10, 20, 50, 100],
       labels = ["<strong> Nombre <br> d'observations </strong> <br>"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -423,7 +423,7 @@ function generateLegendMailleLastObs() {
   }
   legend.onAdd = function (map) {
     var div = L.DomUtil.create("div", "info legend"),
-      dates = [0, 1995, 2000, 2010, 2015, 2022, 2024, 2025],
+      dates = [0, 1960, 1990, 2000, 2012, 2020, 2023, 2025],
       labels = ["<strong>Dernière année<br>d'observation</strong> <br>"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
