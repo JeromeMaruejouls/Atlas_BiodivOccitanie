@@ -57,12 +57,9 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
 @api.route('/observationsMailleLastObs/<int:cd_ref>',methods=['GET'])
 def getObservationsMailleLastObsAPI(cd_ref):
     session = db.session
-    observations = {
-        "point": vmObservationsRepository.searchObservationsChilds(session, cd_ref),
-        "maille": vmObservationsMaillesRepository.getObservationsMaillesLastObsChilds(
-            session, cd_ref
-        ),
-    }
+    observations = vmObservationsMaillesRepository.getObservationsMaillesLastObsChilds(
+        session, cd_ref
+    )
     session.close()
     return jsonify(observations)
 
