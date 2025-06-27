@@ -53,6 +53,24 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
         }
         session.close()
         return jsonify(observations)
+    
+    @api.route("/observationsMailleAndPointLastObs/<int:cd_ref>", methods=["GET"])
+    def getObservationsMailleAndPointAPI(cd_ref):
+        """
+        Retourne les observations d'un taxon en point et en maille
+
+        :returns: dict ({'point:<GeoJson>', 'maille': 'GeoJson})
+        """
+        session = db.session
+        observations = {
+            "point": vmObservationsRepository.searchObservationsChilds(session, cd_ref),
+            "maille": vmObservationsMaillesRepository.getObservationsMaillesLastObsChilds(
+                session, cd_ref
+            ),
+        }
+        session.close()
+        return jsonify(observations)
+
 
 @api.route('/observationsMailleLastObs/<int:cd_ref>',methods=['GET'])
 def getObservationsMailleLastObsAPI(cd_ref):

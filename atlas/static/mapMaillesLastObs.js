@@ -83,10 +83,10 @@ $.ajax({
       displayMailleLastObsLayerFicheEspece(observationsMaille);
       lastyear = 0;
       observationsMaille.features.forEach(function(l) {
-        lastyear += l.properties.lastyear;
+        lastyear = l.properties.lastyear;
       });
 
-      $("#nbObs").html("Dernière année : " + lastyear);
+      $("#nbObs").html("Dernière année d'observation : " + lastyear);
       $("#yearMin").html(yearMin + "&nbsp;&nbsp;&nbsp;&nbsp;");
       $("#yearMax").html("&nbsp;&nbsp;&nbsp;&nbsp;" + yearMax);
     });
