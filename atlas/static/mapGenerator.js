@@ -430,7 +430,7 @@ function generateLegendMailleLastObs() {
     for (var i = 0; i < dates.length; i++) {
       date_n1 = dates[i + 1] ? `&ndash; ${dates[i + 1] } <br>` : "+"
       labels.push(
-        `<i style="background: ${getColor(dates[i] + 1,diff_level)}"></i>
+        `<i style="background: ${getColorLastObs(dates[i] + 1)}"></i>
           ${dates[i]}${date_n1}
         `
       );
