@@ -364,7 +364,7 @@ function styleMaille(feature) {
   };
 }
 
-
+/*
 function getColorLastObs(last_obs) {
     return last_obs >= 2024 ? "#800026"
         : last_obs >= 2022 ? "#BD0026"
@@ -372,6 +372,15 @@ function getColorLastObs(last_obs) {
         : last_obs >= 1990 ? "#FEB24C"
         : last_obs >= 1960 ? "#FED976"
         : "#FFEDA0";
+    } 
+*/
+
+function getColorLastObs(last_obs) {
+    return last_obs >= 2024 ? "#0d7000"
+        : last_obs >= 2015 ? "#86aa1c"
+        : last_obs >= 2000 ? "#ffe438"
+        : last_obs >= 1980 ? "#e3773e"
+        : "#c70a43";
     } 
 
 function styleMailleLastObsFicheEsp(feature) {
