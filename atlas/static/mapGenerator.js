@@ -430,7 +430,7 @@ function generateLegendMailleLastObs() {
   }
   legend.onAdd = function (map) {
     var div = L.DomUtil.create("div", "info legend"),
-      dates = [0, 1960, 1990, 2012, 2022, 2024],
+      dates = [0, 1980, 2000, 2015, 2024],
       labels = ["<strong>Dernière année<br>d'observation</strong> <br>"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
