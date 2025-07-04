@@ -381,7 +381,7 @@ function getColorLastObs(last_obs) {
         : last_obs >= 2000 ? "#B4CF66"
         : last_obs >= 1990 ? "#FFEC5C"
         : last_obs >= 1980 ? "#FF5A33"
-        : "#FF2010";
+        : "#BB1515";
     } 
 
 function styleMailleLastObsFicheEsp(feature) {
