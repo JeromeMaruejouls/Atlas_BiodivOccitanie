@@ -146,7 +146,7 @@ body {
 }
 
 /* onglets actifs */
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-link.active, .show>.nav-link {
   color: #fff;
   background-color: red;
 }
