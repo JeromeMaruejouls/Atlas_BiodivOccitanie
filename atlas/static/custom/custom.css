@@ -142,6 +142,7 @@
   }
 
 /* onglets actifs */
-  .nav-item.show .nav-link.active {
-    background-color: #063242;
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: red;
   }
