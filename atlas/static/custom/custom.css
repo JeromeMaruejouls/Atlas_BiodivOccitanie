@@ -141,3 +141,7 @@
     max-height: 150px;
   }
 
+/* onglets actifs */
+  .nav-link.active {
+    background-color: #063242;
+  }
