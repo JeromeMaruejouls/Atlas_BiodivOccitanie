@@ -142,6 +142,6 @@
   }
 
 /* onglets actifs */
-  .nav-link.active {
+  .nav-item.show .nav-link.active {
     background-color: #063242;
   }
