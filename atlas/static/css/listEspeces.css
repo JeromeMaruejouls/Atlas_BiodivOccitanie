@@ -30,7 +30,7 @@ footer {
     height: calc(100vh - 60px);
 }
 
-#map {
+#map, #datemap, #nbmap {
     height: 600px;
 }
 

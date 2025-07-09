@@ -31,7 +31,7 @@ function generateMap(zoomHomeButton) {
   baseMap = {};
   baseMap[configuration.MAP.FIRST_MAP.tileName] = firstMapTile;
 
-  var map = L.map("map", {
+  var map = L.map("datemap", {
     crs: L.CRS.EPSG3857,
     center: configuration.MAP.LAT_LONG,
     maxBounds: configuration.MAP.MAX_BOUNDS,
