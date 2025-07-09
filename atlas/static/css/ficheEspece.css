@@ -286,7 +286,7 @@ text {
 }
 
 /* onglets actifs */
-.nav-link.active {
+.navbar .nav-link.active {
   color: #fff;
   background-color: #095773;
 }
