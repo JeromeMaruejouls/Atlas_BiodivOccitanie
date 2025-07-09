@@ -146,7 +146,7 @@ body {
 }
 
 /* onglets actifs */
-.nav-link.active, .show>.nav-link {
+.nav-link.active {
   color: #fff;
   background-color: red;
 }
