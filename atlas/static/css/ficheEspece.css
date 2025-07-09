@@ -284,3 +284,9 @@ text {
 .carousel-indicators {
   bottom: 0px;
 }
+
+/* onglets actifs */
+.nav-link.active {
+  color: #fff;
+  background-color: #095773;
+}
