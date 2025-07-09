@@ -144,9 +144,3 @@ body {
 .slidepartenaireindex img {
   max-height: 150px;
 }
-
-/* onglets actifs */
-.nav-link.active {
-  color: #fff;
-  background-color: red;
-}
