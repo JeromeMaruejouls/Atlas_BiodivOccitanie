@@ -38,14 +38,14 @@
             {% if taxonDescription.milieu == None %}
             {{ _('not.resigned.for.the.moment') }}
             {% else %}
-            {{ taxonDescription.milieu }}
+            {{ taxonDescription.milieu | safe }}
             {% endif %}
         </div>
         <div id="chorologie" class="tab-pane fade">
             {% if taxonDescription.chorologie == None %}
             {{ _('not.resigned.for.the.moment') }}
             {% else %}
-            {{ taxonDescription.chorologie }}
+            {{ taxonDescription.chorologie | safe }}
             {% endif %}
         </div>
         <div id="synonymes" class="tab-pane fade">
