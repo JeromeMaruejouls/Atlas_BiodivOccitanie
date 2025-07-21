@@ -161,6 +161,36 @@ $.ajax({
     }
 });
 
+// Gestion des clics sur les onglets de la MAP
+document.addEventListener('DOMContentLoaded', function () {
+    const ongletDate = document.getElementById('datemapTab');
+    const ongletNb = document.getElementById('nbmapTab');
+
+    ongletDate.addEventListener('click', function () {
+        activerOnglet('date');
+    });
+
+    ongletNb.addEventListener('click', function () {
+        activerOnglet('nb');
+    });
+
+    function activerOnglet(mode) {
+        // Retirer la classe active des deux
+        ongletDate.classList.remove('active');
+        ongletNb.classList.remove('active');
+
+        // Activer l'onglet cliqué
+        if (mode === 'date') {
+            ongletDate.classList.add('active');
+            displayMailleLastObsLayerFicheEspece();
+        } else {
+            ongletNb.classList.add('active');
+            displayMailleLayerFicheEspece();
+        }
+    }
+});
+
+
 function eventOnZoom(observationsMaille, observationsPoint) {
     // ZoomEvent: change maille to point
     var legendblock = $("div.info");
