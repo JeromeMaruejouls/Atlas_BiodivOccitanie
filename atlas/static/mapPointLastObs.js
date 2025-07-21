@@ -13,6 +13,8 @@ var legend = L.control({position: "bottomright"});
 
 // Current observation Layer: leaflet layer type
 var currentLayer;
+var nbObsMailleLayer;
+var lastObsMailleLayer;
 
 // Current observation geoJson:  type object
 var myGeoJson;
@@ -48,9 +50,9 @@ $.ajax({
 
     // on a chargé les deux couches de maille (nb_obs et last_obs) et maintenant on en affiche une selon l'onglet actif.
     if (document.getElementById('datemapTab').classList.contains('active')) {
-        displayMailleLayerFicheEspece();
-    } else {
         displayMailleLastObsLayerFicheEspece();
+    } else {
+        displayMailleLayerFicheEspece();
     }
 
     if (mailleBoolean) {
@@ -72,7 +74,9 @@ $.ajax({
             mySlider.on("slideStop", function () {
                 sliderTouch = true;
 
-                map.removeLayer(currentLayer);
+                map.removeLayer(lastObsMailleLayer);
+                map.removeLayer(nbObsMailleLayer);
+                
                 if (map.getZoom() >= configuration.ZOOM_LEVEL_POINT) {
                     // on filtre en local
                     displayMarkerLayerFicheEspece(
@@ -131,7 +135,9 @@ $.ajax({
                 yearMin = years[0];
                 yearMax = years[1];
 
-                map.removeLayer(currentLayer);
+                map.removeLayer(lastObsMailleLayer);
+                map.removeLayer(nbObsMailleLayer);
+
                 displayMarkerLayerFicheEspece(
                     observationsPoint,
                     yearMin,
@@ -200,7 +206,9 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             activeMode != "Point" &&
             map.getZoom() >= configuration.ZOOM_LEVEL_POINT
         ) {
-            map.removeLayer(currentLayer);
+            map.removeLayer(lastObsMailleLayer);
+            map.removeLayer(nbObsMailleLayer);
+
             legendblock.attr("hidden", "true");
 
             var yearMin = null;

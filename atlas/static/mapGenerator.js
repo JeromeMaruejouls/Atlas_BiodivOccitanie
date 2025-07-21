@@ -500,9 +500,6 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
 
 // Display Maille layer
 
-var nbObsMailleLayer;
-var lastObsMailleLayer;
-
 function loadMailleLayerFicheEspece(observationsMaille) {
   myGeoJson = observationsMaille;
   nbObsMailleLayer = L.geoJson(myGeoJson, {
