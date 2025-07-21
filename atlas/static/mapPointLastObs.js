@@ -111,7 +111,7 @@ $.ajax({
                         // reactivation de l'event du zoom avec les nouvelle valeurs
                         eventOnZoom(observationsMaille, observationsPoint);
 
-                        displayMailleLastObsLayerFicheEspece(observationsMaille);
+                        //displayMailleLastObsLayerFicheEspece(observationsMaille);
                         lastyear = 0;
                         observationsMaille.features.forEach(function(l) {
                             if (lastyear < l.properties.lastyear) {
