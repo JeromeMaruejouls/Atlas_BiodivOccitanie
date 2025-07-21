@@ -74,8 +74,15 @@ $.ajax({
             mySlider.on("slideStop", function () {
                 sliderTouch = true;
 
-                map.removeLayer(lastObsMailleLayer);
-                map.removeLayer(nbObsMailleLayer);
+                if (map.hasLayer(nbObsMailleLayer)) {
+                    map.removeLayer(nbObsMailleLayer);
+                }
+                if (map.hasLayer(lastObsMailleLayer)) {
+                    map.removeLayer(lastObsMailleLayer);
+                }
+                if (map.hasLayer(currentLayer)) {
+                    map.removeLayer(currentLayer);
+                }
                 
                 if (map.getZoom() >= configuration.ZOOM_LEVEL_POINT) {
                     // on filtre en local
@@ -140,8 +147,15 @@ $.ajax({
                 yearMin = years[0];
                 yearMax = years[1];
 
-                map.removeLayer(lastObsMailleLayer);
-                map.removeLayer(nbObsMailleLayer);
+                if (map.hasLayer(nbObsMailleLayer)) {
+                    map.removeLayer(nbObsMailleLayer);
+                }
+                if (map.hasLayer(lastObsMailleLayer)) {
+                    map.removeLayer(lastObsMailleLayer);
+                }
+                if (map.hasLayer(currentLayer)) {
+                    map.removeLayer(currentLayer);
+                }
 
                 displayMarkerLayerFicheEspece(
                     observationsPoint,
@@ -211,8 +225,15 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             activeMode != "Point" &&
             map.getZoom() >= configuration.ZOOM_LEVEL_POINT
         ) {
-            map.removeLayer(lastObsMailleLayer);
-            map.removeLayer(nbObsMailleLayer);
+            if (map.hasLayer(nbObsMailleLayer)) {
+                map.removeLayer(nbObsMailleLayer);
+            }
+            if (map.hasLayer(lastObsMailleLayer)) {
+                map.removeLayer(lastObsMailleLayer);
+            }
+            if (map.hasLayer(currentLayer)) {
+                map.removeLayer(currentLayer);
+            }
 
             legendblock.attr("hidden", "true");
 
@@ -237,7 +258,15 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             map.getZoom() <= configuration.ZOOM_LEVEL_POINT - 1
         ) {
             // display legend
-            map.removeLayer(currentLayer);
+            if (map.hasLayer(nbObsMailleLayer)) {
+                map.removeLayer(nbObsMailleLayer);
+            }
+            if (map.hasLayer(lastObsMailleLayer)) {
+                map.removeLayer(lastObsMailleLayer);
+            }
+            if (map.hasLayer(currentLayer)) {
+                map.removeLayer(currentLayer);
+            }
 
             legendblock.removeAttr("hidden");
             if (document.getElementById('datemapTab').classList.contains('active')) {
