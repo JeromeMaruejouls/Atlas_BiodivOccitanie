@@ -204,6 +204,17 @@ document.addEventListener('DOMContentLoaded', function () {
         ongletDate.classList.remove('active');
         ongletNb.classList.remove('active');
 
+        // on efface les couches affichées
+        if (map.hasLayer(nbObsMailleLayer)) {
+            map.removeLayer(nbObsMailleLayer);
+        }
+        if (map.hasLayer(lastObsMailleLayer)) {
+            map.removeLayer(lastObsMailleLayer);
+        }
+        if (map.hasLayer(currentLayer)) {
+            map.removeLayer(currentLayer);
+        }
+
         // Activer l'onglet cliqué
         if (mode === 'date') {
             ongletDate.classList.add('active');
