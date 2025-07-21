@@ -38,12 +38,17 @@ $.ajax({
     var mailleBoolean = false;
     //if (observations.point.features.length > 500) {
     if (observations.point.features.length > 0) {
-            displayMailleLastObsLayerFicheEspece(observations.maille);
+            loadMailleLastObsLayerFicheEspece(observations.maille);
+            displayMailleLastObsLayerFicheEspece();
         mailleBoolean = true;
     } else {
         // affichage des points sans filtrer par annes pour gagner en perf
         displayMarkerLayerFicheEspece(observationsPoint, null, null, sliderTouch);
     }
+
+    // on a chargé les deux couches de maille (nb_obs et last_obs) et maintenant on en affiche une.
+
+
     if (mailleBoolean) {
         // zoom event
         eventOnZoom(observationsMaille, observationsPoint);

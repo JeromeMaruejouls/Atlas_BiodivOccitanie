@@ -500,26 +500,35 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
 
 // Display Maille layer
 
-function displayMailleLayerFicheEspece(observationsMaille) {
+var nbObsMailleLayer;
+var lastObsMailleLayer;
+
+function loadMailleLayerFicheEspece(observationsMaille) {
   myGeoJson = observationsMaille;
-  currentLayer = L.geoJson(myGeoJson, {
+  nbObsMailleLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMaille,
     style: styleMaille,
   });
-  currentLayer.addTo(map);
+}
+
+function displayMailleLayerFicheEspece() {
+  nbObsMailleLayer.addTo(map);
   // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
 
   // ajout de la légende
   generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
 }
 
-function displayMailleLastObsLayerFicheEspece(observationsMaille) {
+function loadMailleLastObsLayerFicheEspece(observationsMaille) {
   myGeoJson = observationsMaille;
-  currentLayer = L.geoJson(myGeoJson, {
+  lastObsMailleLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMailleLastObsFicheEsp,
     style: styleMailleLastObsFicheEsp,
   });
-  currentLayer.addTo(map);
+}
+
+function displayMailleLastObsLayerFicheEspece() {
+  lastObsMailleLayer.addTo(map);
   // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
 
   // ajout de la légende
