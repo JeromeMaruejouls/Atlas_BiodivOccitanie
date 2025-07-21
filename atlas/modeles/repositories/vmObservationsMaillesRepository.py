@@ -72,7 +72,7 @@ def getObservationsMaillesLastObsChilds(session, cd_ref, year_min=None, year_max
                 geometry=json.loads(o.geojson_maille),
                 properties={
                     "id_maille": o.id_maille,
-                    "nb_observations": 1,
+                    "nb_observations": o.nb_obs,
                     "lastyear": o.last_observation
                 },
             )
