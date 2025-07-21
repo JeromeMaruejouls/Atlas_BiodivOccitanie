@@ -90,7 +90,7 @@ $.ajax({
                     $.ajax({
                         url:
                             configuration.URL_APPLICATION +
-                            "/api/observationsMailleLastObs/" +
+                            "/api/observationsMailleAndPointLastObs/" +
                             cd_ref,
                         dataType: "json",
                         type: "get",
