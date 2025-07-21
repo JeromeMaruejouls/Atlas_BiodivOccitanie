@@ -48,9 +48,9 @@ $.ajax({
 
     // on a chargé les deux couches de maille (nb_obs et last_obs) et maintenant on en affiche une selon l'onglet actif.
     if (document.getElementById('datemapTab').classList.contains('active')) {
-        displayMailleLastObsLayerFicheEspece();
-    } else {
         displayMailleLayerFicheEspece();
+    } else {
+        displayMailleLastObsLayerFicheEspece();
     }
 
     if (mailleBoolean) {
