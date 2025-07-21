@@ -46,14 +46,14 @@ $.ajax({
     } else {
         // affichage des points sans filtrer par annes pour gagner en perf
         displayMarkerLayerFicheEspece(observationsPoint, null, null, sliderTouch);
-    }
+    };
 
     // on a chargé les deux couches de maille (nb_obs et last_obs) et maintenant on en affiche une selon l'onglet actif.
     if (document.getElementById('datemapTab').classList.contains('active')) {
         displayMailleLastObsLayerFicheEspece();
     } else {
         displayMailleLayerFicheEspece();
-    }
+    };
 
     if (mailleBoolean) {
         // zoom event
@@ -111,7 +111,12 @@ $.ajax({
                         // reactivation de l'event du zoom avec les nouvelle valeurs
                         eventOnZoom(observationsMaille, observationsPoint);
 
-                        //displayMailleLastObsLayerFicheEspece(observationsMaille);
+                        if (document.getElementById('datemapTab').classList.contains('active')) {
+                            displayMailleLastObsLayerFicheEspece();
+                        } else {
+                            displayMailleLayerFicheEspece();
+                        };
+                        
                         lastyear = 0;
                         observationsMaille.features.forEach(function(l) {
                             if (lastyear < l.properties.lastyear) {
@@ -235,7 +240,11 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             map.removeLayer(currentLayer);
 
             legendblock.removeAttr("hidden");
-            displayMailleLastObsLayerFicheEspece(observationsMaille);
+            if (document.getElementById('datemapTab').classList.contains('active')) {
+                displayMailleLastObsLayerFicheEspece();
+            } else {
+                displayMailleLayerFicheEspece();
+            };
             activeMode = "Maille";
         }
     });
