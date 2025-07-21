@@ -3,24 +3,15 @@
         <div class="row">
             <div class="col-sm-10" id="mapContainer">
                 <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#datemapTab">Par date de la dernière observation</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#nbmapTab">Par nombre d'observations</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" id="#datemapTab">Par date de la dernière observation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="#nbmapTab">Par nombre d'observations</a></li>
                 </ul>
 
           <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="datemapTab">
-                        <div id="datemap">
-                            <img id="loadingGif" src="">
-                            {% include 'templates/core/loaderSpinner.html' %}
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nbmapTab">
-                        <div id="nbmap">
-                            <img id="loadingGif" src="">
-                            {% include 'templates/core/loaderSpinner.html' %}
-                        </div>
-                    </div>
+               <!-- Contenu unique affiché en permanence -->
+                <div id="datemap">
+                    <img id="loadingGif" src="">
+                    {% include 'templates/core/loaderSpinner.html' %}
                 </div>
             </div>  
             <div class="col-sm-2" id="mapStat">
