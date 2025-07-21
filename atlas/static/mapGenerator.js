@@ -395,6 +395,12 @@ function styleMailleLastObsFicheEsp(feature) {
 
 
 function generateLegendMaille(diff_level) {
+  // Supprimer la légende existante si elle existe
+  var existingLegend = L.DomUtil.get("contour-legend");
+  if (existingLegend) {
+    existingLegend.parentNode.removeChild(existingLegend);
+  }
+
   // check if contour already exists
   if (L.DomUtil.get("contour-legend")) {
     return
@@ -425,6 +431,12 @@ function generateLegendMaille(diff_level) {
 
 
 function generateLegendMailleLastObs() {
+  // Supprimer la légende existante si elle existe
+  var existingLegend = L.DomUtil.get("contour-legend");
+  if (existingLegend) {
+    existingLegend.parentNode.removeChild(existingLegend);
+  }
+
   // check if contour already exists
   if (L.DomUtil.get("contour-legend")) {
     return
@@ -510,8 +522,6 @@ function loadMailleLayerFicheEspece(observationsMaille) {
 
 function displayMailleLayerFicheEspece() {
   nbObsMailleLayer.addTo(map);
-  // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
-
   // ajout de la légende
   generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
 }
@@ -526,8 +536,6 @@ function loadMailleLastObsLayerFicheEspece(observationsMaille) {
 
 function displayMailleLastObsLayerFicheEspece() {
   lastObsMailleLayer.addTo(map);
-  // map.fitBounds(currentLayer.getBounds()); ZOOM FUNCTION ON SPECIES SHEET MAILLE OBSERVATIONS DISPLAY
-
   // ajout de la légende
   generateLegendMailleLastObs()  // MODIF JEROME
 }
