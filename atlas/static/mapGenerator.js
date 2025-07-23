@@ -510,10 +510,43 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
   return myGeoJson;
 }
 
+
+// GeoJson Point
+function generateGeojsonMailleFicheEspece(
+  geojsonMaille,
+  yearMin,
+  yearMax,
+  sliderTouch
+) {
+  var filteredGeoJsonMaille = Object.assign({}, geojsonMaille);
+  // si on a touché le slider on filtre sinon on retourne directement le geojson
+  if (yearMin && yearMax && sliderTouch) {
+    filteredGeoJsonMaille.features = geojsonMaille.features.filter(function (
+      obs
+    ) {
+      return obs.properties.lastyear >= yearMin && obs.properties.lastyear <= yearMax;
+    });
+    return filteredGeoJsonMaille;
+  } else {
+    return filteredGeoJsonMaille;
+  }
+}
+
 // Display Maille layer
 
-function loadMailleLayerFicheEspece(observationsMaille) {
-  myGeoJson = observationsMaille;
+function loadMailleLayerFicheEspece(observationsMaille,yearMin,yearMax,sliderTouch) {
+  // on vérifie si le slider a été touché
+  // sinon on met null a yearmin et yearmax pour ne pas filtrer par année a la génération du GeoJson
+
+  // yearMin = years[0] == taxonYearMin ? null : years[0];
+  // yearMax = years[1] == YEARMAX ? null : years[1];
+  myGeoJson = generateGeojsonMailleFicheEspece(
+    observationsMaille,
+    yearMin,
+    yearMax,
+    sliderTouch
+  );
+
   nbObsMailleLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMaille,
     style: styleMaille,
