@@ -188,7 +188,7 @@ function onEachFeaturePoint(feature, layer) {
 }
 
 // popup Maille
-function onEachFeatureMaille(feature, layer) {
+function onEachFeatureMailleFicheEsp(feature, layer) {
   popupContent =
     "<b>Nombre d'observation(s): </b>" +
     feature.properties.nb_observations +
@@ -602,7 +602,7 @@ function generateGeojsonGridArea(observations) {
 function displayGridLayerArea(observations) {
   myGeoJson = generateGeojsonGridArea(observations);
   currentLayer = L.geoJson(myGeoJson, {
-    onEachFeature: onEachFeatureMaille,
+    onEachFeature: onEachFeatureMailleFicheEsp,
     style: styleMaille,
   });
   currentLayer.addTo(map);
@@ -889,6 +889,7 @@ function printEspece(tabEspece, tabCdRef) {
   }
   return stringEspece;
 }
+
 
 function onEachFeatureMailleLastObs(feature, layer) {
   // Add class to be able to scroll the species list
