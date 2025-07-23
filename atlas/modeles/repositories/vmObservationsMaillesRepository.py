@@ -37,7 +37,7 @@ def getObservationsMaillesChilds(session, cd_ref, year_min=None, year_max=None):
                 properties={
                     "id_maille": o.id_maille,
                     "nb_observations": o.nb_obs,
-                    "last_observation": o.last_observation,
+                    "lastyear": o.last_observation,
                     "diffusion_level": o.diffusion_level       # MODIF JEROME
                 },
             )

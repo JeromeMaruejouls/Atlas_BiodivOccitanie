@@ -193,7 +193,7 @@ function onEachFeatureMaille(feature, layer) {
     "<b>Nombre d'observation(s): </b>" +
     feature.properties.nb_observations +
     "</br> <b> Dernière observation: </b>" +
-    feature.properties.last_observation +
+    feature.properties.lastyear +
     " ";
   layer.bindPopup(popupContent);
 }
@@ -477,7 +477,7 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
       properties = {
         id_maille: idMaille,
         nb_observations: 1,
-        last_observation: observations[i].annee,
+        lastyear: observations[i].annee,
         diffusion_level: observations[i].diffusion_level, // MODIF JEROME
         tabDateobs: [new Date(observations[i].dateobs)],
       };
@@ -490,8 +490,8 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
           properties.nb_observations += observations[j].nb_observations;
           properties.tabDateobs.push(new Date(observations[i].dateobs));
         }
-        if (observations[j].annee >= properties.last_observation) {
-          properties.last_observation = observations[j].annee;
+        if (observations[j].annee >= properties.lastyear) {
+          properties.lastyear = observations[j].annee;
         }
         j = j + 1;
       }
@@ -550,15 +550,15 @@ function generateGeojsonGridArea(observations) {
     properties = {
       id_maille: idMaille,
       nb_observations: 1,
-      last_observation: observations[i].annee,
+      lastyear: observations[i].annee,
       diffusion_level: observations[i].diffusion_level // MODIF JEROME
     };
     var j = i + 1;
     while (j < observations.length && observations[j].id_maille <= idMaille) {
       properties.nb_observations += observations[j].nb_observations;
 
-      if (observations[j].annee >= properties.last_observation) {
-        properties.last_observation = observations[j].annee;
+      if (observations[j].annee >= properties.lastyear) {
+        properties.lastyear = observations[j].annee;
       }
       j = j + 1;
     }
