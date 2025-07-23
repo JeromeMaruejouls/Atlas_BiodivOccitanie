@@ -510,6 +510,7 @@ function generateGeojsonMaille(observations, yearMin, yearMax) {
   return myGeoJson;
 }
 
+// Affichage des mailles des fiches especes :
 
 // GeoJson Point
 function generateGeojsonMailleFicheEspece(
@@ -572,6 +573,8 @@ function displayMailleLastObsLayerFicheEspece() {
   // ajout de la légende
   generateLegendMailleLastObs()  // MODIF JEROME
 }
+
+// Fin affichage des des mailles Fiches Especes
 
 function generateGeojsonGridArea(observations) {
   var i = 0;

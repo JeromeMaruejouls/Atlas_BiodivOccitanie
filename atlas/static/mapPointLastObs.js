@@ -118,6 +118,8 @@ $.ajax({
                         // reactivation de l'event du zoom avec les nouvelle valeurs
                         eventOnZoom(observationsMaille, observationsPoint);
 
+                        loadMailleLastObsLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+                        loadMailleLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
                         if (document.getElementById('datemapTab').classList.contains('active')) {
                             displayMailleLastObsLayerFicheEspece();
                         } else {
@@ -268,6 +270,9 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             activeMode != "Maille" &&
             map.getZoom() <= configuration.ZOOM_LEVEL_POINT - 1
         ) {
+            loadMailleLastObsLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+            loadMailleLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+
             // display legend
             if (map.hasLayer(nbObsMailleLayer)) {
                 map.removeLayer(nbObsMailleLayer);
