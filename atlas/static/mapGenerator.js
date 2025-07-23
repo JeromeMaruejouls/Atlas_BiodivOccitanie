@@ -355,7 +355,7 @@ function getColor(nb,dl) {
   }
 }
 
-function styleMaille(feature) {
+function styleMailleFicheEsp(feature) {
   return {
     fillColor: getColor(feature.properties.nb_observations,feature.properties.diffusion_level),
     weight: 1,
@@ -603,7 +603,7 @@ function displayGridLayerArea(observations) {
   myGeoJson = generateGeojsonGridArea(observations);
   currentLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMailleFicheEsp,
-    style: styleMaille,
+    style: styleMailleFicheEsp,
   });
   currentLayer.addTo(map);
   map.fitBounds(currentLayer.getBounds());
