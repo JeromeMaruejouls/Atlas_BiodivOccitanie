@@ -38,7 +38,7 @@ def searchCommuneAPI():
 if not current_app.config["AFFICHAGE_MAILLE"]:
 
     @api.route("/observationsMailleAndPoint/<int:cd_ref>", methods=["GET"])
-    def getObservationsMailleAndPointAPI(cd_ref, year_min=None, year_max=None):
+    def getObservationsMailleAndPointAPI(cd_ref):
         """
         Retourne les observations d'un taxon en point et en maille
 
@@ -49,16 +49,14 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
             "point": vmObservationsRepository.searchObservationsChilds(session, cd_ref),
             "maille": vmObservationsMaillesRepository.getObservationsMaillesChilds(
                 session,
-                cd_ref,
-                year_min=request.args.get("year_min"),
-                year_max=request.args.get("year_max"),
+                cd_ref
             ),
         }
         session.close()
         return jsonify(observations)
     
     @api.route("/observationsMailleAndPointLastObs/<int:cd_ref>", methods=["GET"])
-    def getObservationsMailleAndPointLastObsAPI(cd_ref, year_min=None, year_max=None):
+    def getObservationsMailleAndPointLastObsAPI(cd_ref):
         """
         Retourne les observations d'un taxon en point et en maille
 
@@ -69,9 +67,7 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
             "point": vmObservationsRepository.searchObservationsChilds(session, cd_ref),
             "maille": vmObservationsMaillesRepository.getObservationsMaillesLastObsChilds(
                 session,
-                cd_ref,
-                year_min=request.args.get("year_min"),
-                year_max=request.args.get("year_max"),
+                cd_ref
             ),
         }
         session.close()

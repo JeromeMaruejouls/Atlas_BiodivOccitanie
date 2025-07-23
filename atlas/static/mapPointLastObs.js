@@ -45,7 +45,7 @@ $.ajax({
         mailleBoolean = true;
     } else {
         // affichage des points sans filtrer par annes pour gagner en perf
-        displayMarkerLayerFicheEspece(observationsPoint, null, null, sliderTouch);
+        displayMarkerLayerFicheEspece(observationsPoint, yearMin, yearMax, sliderTouch);
     };
 
     // on a chargé les deux couches de maille (nb_obs et last_obs) et maintenant on en affiche une selon l'onglet actif.
