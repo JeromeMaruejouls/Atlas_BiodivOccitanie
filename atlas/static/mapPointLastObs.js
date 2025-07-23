@@ -40,8 +40,8 @@ $.ajax({
     var mailleBoolean = false;
     //if (observations.point.features.length > 500) {
     if (observations.point.features.length > 0) {
-            loadMailleLastObsLayerFicheEspece(observations.maille);
-            loadMailleLayerFicheEspece(observations.maille);
+            loadMailleLastObsLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+            loadMailleLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
         mailleBoolean = true;
     } else {
         // affichage des points sans filtrer par annes pour gagner en perf
