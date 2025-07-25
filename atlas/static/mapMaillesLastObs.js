@@ -27,7 +27,7 @@ var myGeoJson;
 var compteurLegend = 0; // compteur pour ne pas rajouter la légende à chaque fois
 
 $.ajax({
-  url: configuration.URL_APPLICATION + "/api/observationsMailleLastObs/" + cd_ref,
+  url: configuration.URL_APPLICATION + "/api/observationsMaille/" + cd_ref,
   dataType: "json",
   beforeSend: function() {
     // // $("#loadingGif").attr(
@@ -66,7 +66,7 @@ $.ajax({
     yearMax = years[1];
     map.removeLayer(currentLayer);
     $.ajax({
-      url: configuration.URL_APPLICATION + "/api/observationsMailleLastObs/" + cd_ref,
+      url: configuration.URL_APPLICATION + "/api/observationsMaille/" + cd_ref,
       dataType: "json",
       type: "get",
       data: {
