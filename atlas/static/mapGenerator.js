@@ -202,8 +202,11 @@ function onEachFeatureMailleFicheEsp(feature, layer) {
 // popup Maille Last Obs
 function onEachFeatureMailleLastObsFicheEsp(feature, layer) {
   popupContent =
-    "<b>Année de dernière observation: </b>" +
-    feature.properties.lastyear;
+    "<b> Dernière observation: </b>" +
+    feature.properties.lastyear +
+    "</br> <b>Nombre d'observation(s): </b>" +
+    feature.properties.nb_observations +
+    " ";
   layer.bindPopup(popupContent);
 }
 
