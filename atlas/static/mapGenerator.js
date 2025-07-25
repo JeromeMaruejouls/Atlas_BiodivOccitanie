@@ -63,6 +63,7 @@ function generateMap(zoomHomeButton) {
     $.getJSON(url_limit_territory, function (json) {
       const territoryGeoJson = L.geoJson(json, {
         style: territoryStyle,
+        attribution: 'Limites territoire'
       });
       territoryGeoJson.addTo(map);
       // map.fitBounds(territoryGeoJson.getBounds())
@@ -608,6 +609,7 @@ function displayGridLayerArea(observations) {
   currentLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMailleFicheEsp,
     style: styleMailleFicheEsp,
+    attribution: 'GridLayerArea'
   });
   currentLayer.addTo(map);
   map.fitBounds(currentLayer.getBounds());
@@ -667,6 +669,7 @@ function displayMarkerLayerFicheEspece(
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, pointDisplayOptionsFicheEspece(feature));
     },
+    attribution: 'Point Layer'
   });
   if (myGeoJson.features.length > configuration.LIMIT_CLUSTER_POINT) {
     newLayer = currentLayer;
