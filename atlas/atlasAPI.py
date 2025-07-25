@@ -74,19 +74,6 @@ if not current_app.config["AFFICHAGE_MAILLE"]:
         return jsonify(observations)
 
 
-@api.route('/observationsMailleLastObs/<int:cd_ref>',methods=['GET'])
-def getObservationsMailleLastObsAPI(cd_ref, year_min=None, year_max=None):
-    session = db.session
-    observations = vmObservationsMaillesRepository.getObservationsMaillesLastObsChilds(
-        session,
-        cd_ref,
-        year_min=request.args.get("year_min"),
-        year_max=request.args.get("year_max"),
-    )
-    session.close()
-    return jsonify(observations)
-
-
 @api.route("/observationsMaille/<int:cd_ref>", methods=["GET"])
 def getObservationsMailleAPI(cd_ref, year_min=None, year_max=None):
     """
