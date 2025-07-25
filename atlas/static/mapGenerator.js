@@ -536,10 +536,12 @@ function generateGeojsonMailleFicheEspece(
 // Display Maille layer
 
 function loadMailleLayerFicheEspece(observationsMaille) {
+  console.log('Génération mailles par obs');
   myGeoJson = observationsMaille;
   nbObsMailleLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMailleFicheEsp,
     style: styleMailleFicheEsp,
+    attribution: 'Mailles LR par nb obs'
   });
 }
 
@@ -550,10 +552,12 @@ function displayMailleLayerFicheEspece() {
 }
 
 function loadMailleLastObsLayerFicheEspece(observationsMaille) {
+  console.log('Génération mailles par date');
   myGeoJson = observationsMaille;
   lastObsMailleLayer = L.geoJson(myGeoJson, {
     onEachFeature: onEachFeatureMailleLastObsFicheEsp,
     style: styleMailleLastObsFicheEsp,
+    attribution: 'Mailles LR par date de dernière obs'
   });
 }
 
