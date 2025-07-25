@@ -238,8 +238,9 @@ function eventOnZoom(observationsMaille, observationsPoint) {
             activeMode != "Maille" &&
             map.getZoom() <= configuration.ZOOM_LEVEL_POINT - 1
         ) {
-            loadMailleLastObsLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
-            loadMailleLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+            //pas besoin de recharger les données apres le changement de zoom
+            //loadMailleLastObsLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
+            //loadMailleLayerFicheEspece(observationsMaille, yearMin, yearMax, sliderTouch);
 
             removeAllLayerFromMap();
 
