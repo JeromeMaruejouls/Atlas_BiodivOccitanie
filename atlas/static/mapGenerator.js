@@ -548,8 +548,8 @@ function loadMailleLayerFicheEspece(observationsMaille) {
 
 function displayMailleLayerFicheEspece() {
   nbObsMailleLayer.addTo(map);
-  // ajout de la légende
-  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
+  // ajout de la légende (si la properties n'existe pas, on fixe à 5)
+  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level ?? 5)  // MODIF JEROME
 }
 
 function loadMailleLastObsLayerFicheEspece(observationsMaille) {
@@ -615,7 +615,7 @@ function displayGridLayerArea(observations) {
   map.fitBounds(currentLayer.getBounds());
 
   // ajout de la légende
-  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level)  // MODIF JEROME
+  generateLegendMaille(myGeoJson.features[0].properties.diffusion_level ?? 5)  // MODIF JEROME
 }
 
 // GeoJson Point
