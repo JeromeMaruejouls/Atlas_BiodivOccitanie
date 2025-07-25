@@ -1066,3 +1066,14 @@ function generateSliderOnMap() {
   $("#yearMax").html("&nbsp;&nbsp;&nbsp;&nbsp;" + YEARMAX);
   $("#yearMin").html(taxonYearMin + "&nbsp;&nbsp;&nbsp;&nbsp");
 }
+
+
+function removeAllLayerFromMap() {
+  var couchesASupprimer = [nbObsMailleLayer, lastObsMailleLayer, currentLayer];
+
+  couchesASupprimer.forEach(function(couche) {
+      if (couche && map.hasLayer(couche)) {
+          map.removeLayer(couche);
+      }
+  });
+}
