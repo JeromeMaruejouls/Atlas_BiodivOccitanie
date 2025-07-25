@@ -29,7 +29,7 @@ var observationsMaille;
 var observationsPoint;
 $.ajax({
     url:
-        configuration.URL_APPLICATION + "/api/observationsMailleAndPointLastObs/" + cd_ref,
+        configuration.URL_APPLICATION + "/api/observationsMailleAndPoint/" + cd_ref,
     dataType: "json",
 }).done(function (observations) {
     $("#loaderSpinner").hide();
