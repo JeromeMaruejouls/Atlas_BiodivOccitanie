@@ -85,12 +85,24 @@
                     <div id="communes" class="tab-pane fade show active">
                 {% endif %}
                 <p>
-                    {% for com in communes %}
-                        <a href="{{ url_for('main.ficheCommune', insee = com.insee) }}">{{ com.commune_maj }}</a>
-                        {% if not loop.last %}
-                            -
-                        {% endif %}
-                    {% endfor %}
+                    <span id="communes-list">
+                        {% for com in communes[:30] %}
+                            <a href="{{ url_for('main.ficheCommune', insee=com.insee) }}">{{ com.commune_maj }}</a>{% if not loop.last %} - {% endif %}
+                        {% endfor %}
+
+                        <span id="more-communes" class="d-none">
+                            {% if communes|length > 30 %}
+                                - 
+                                {% for com in communes[30:] %}
+                                    <a href="{{ url_for('main.ficheCommune', insee=com.insee) }}">{{ com.commune_maj }}</a>{% if not loop.last %} - {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </span>
+                    </span>
+
+                    {% if communes|length > 30 %}
+                        <button id="toggle-communes-btn" class="btn btn-sm btn-link">Afficher plus</button>
+                    {% endif %}
                 </p>
                 </div>
 
@@ -98,7 +110,7 @@
                 {% if configuration.DISPLAY_OBSERVERS %}
                     <div id="observateurs" class="tab-pane fade">
                         <span id="observers-list">
-                            {% for o in observers[:10] %}
+                            {% for o in observers[:30] %}
                                 <span>{{ o }}</span>{% if not loop.last %} - {% endif %}
                             {% endfor %}
 
