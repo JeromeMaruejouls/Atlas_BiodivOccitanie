@@ -165,7 +165,7 @@
   }
 
   #toggle-communes-btn:hover, #toggle-observers-btn:hover {
-    background-color: rgb(0, 30, 61);   /* Bleu plus foncé au survol */
+    background-color: #5fb80c;
     color: white;
     text-decoration: none;
   }
