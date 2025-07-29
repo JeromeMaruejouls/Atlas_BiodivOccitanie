@@ -170,11 +170,15 @@
                                     </strong>
                                     <br>{{ _('organism.prospection') }} : <strong>{{ "%.2f"|format(o['nb_observation']/taxon.taxonSearch.nb_obs*100) }} %</strong>
                                     <span class="float-right">
-                                        <h3><a class="badge badge-primary" href="{{ url_for('main.ficheOrganism', id_organism=o['id_organism']) }}"
-                                            data-toggle="tooltip"  style="color: white;"
-                                            title="{{ _('check.organism.sheet') }}" data-placement="left">
-                                         <i class="fas fa-list fa-fw"></i> {{ _('organism.sheet') }}</i>
-                                        </a></h3>
+                                        <h3>
+                                        <a href="{{ url_for('main.ficheOrganism', id_organism=o['id_organism']) }}"
+                                            class="btn btn-sm btn-organisms-sheet"
+                                            data-toggle="tooltip"
+                                            title="{{ _('check.organism.sheet') }}"
+                                            data-placement="left">
+                                            <i class="fas fa-list fa-fw"></i> {{ _('organism.sheet') }}
+                                        </a>
+                                        </h3>
                                     </span>
 
                                 </div>

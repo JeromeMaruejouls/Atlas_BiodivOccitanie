@@ -145,3 +145,10 @@
   .d-none {
     display: none;
   }
+
+/* boutons vers les fiches orga sur les fiches especes */  
+  .btn-organisms-sheet{
+    background-color: #095773;
+    color: white;
+  }
+  
