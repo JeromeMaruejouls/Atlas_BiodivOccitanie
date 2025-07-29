@@ -145,10 +145,10 @@
                                         {% if o['url_logo']!= None %}
                                             {% if not o['url_organism'] in (None, '') %}
                                             <a href="{{ o['url_organism'] }}" target="_blank">
-                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width:100px'>
+                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width:100px; max-height: 90px'>
                                             </a>
                                             {% else %}
-                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width:100px'>
+                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width:100px; max-height: 90px'>
                                             {% endif %}
                                         {% endif %}
                                     </div>
