@@ -103,16 +103,16 @@
                             {% endfor %}
 
                             <span id="more-observers" class="d-none">
-                                {% if observers|length > 10 %}
+                                {% if observers|length > 30 %}
                                     - 
-                                    {% for o in observers[10:] %}
+                                    {% for o in observers[30:] %}
                                         <span>{{ o }}</span>{% if not loop.last %} - {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             </span>
                         </span>
 
-                        {% if observers|length > 10 %}
+                        {% if observers|length > 30 %}
                             <button id="toggle-observers-btn" class="btn btn-sm btn-link">Afficher plus</button>
                         {% endif %}
                     </div>
