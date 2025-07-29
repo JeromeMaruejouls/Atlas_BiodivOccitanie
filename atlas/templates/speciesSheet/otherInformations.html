@@ -140,15 +140,15 @@
                                 <div class="pictoImgList mr-2" data-toggle="tooltip" data-original-title="{{ taxon.group2_inpn }}"
                                  data-placement="right">
                                     <span class="float-right"></span>
-                                    <div class="pictoImgList mr-2" data-toggle="tooltip" data-original-title="{{ taxon.group2_inpn }}"
+                                    <div class="pictoImgList mr-2" data-toggle="tooltip" data-original-title="{{ taxon.group2_inpn }}" style='width: 150px;
                                     data-placement="right">
                                         {% if o['url_logo']!= None %}
                                             {% if not o['url_organism'] in (None, '') %}
                                             <a href="{{ o['url_organism'] }}" target="_blank">
-                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width: 150px; max-height: 90px; height: auto;'>
+                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='max-height: 90px; height: auto;'>
                                             </a>
                                             {% else %}
-                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='width: 150px; max-height: 90px; height: auto;'>
+                                                <img class="mx-auto d-block" src="{{ o['url_logo'] }}" style='max-height: 90px; height: auto;'>
                                             {% endif %}
                                         {% endif %}
                                     </div>
