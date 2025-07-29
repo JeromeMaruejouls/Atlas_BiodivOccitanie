@@ -141,6 +141,35 @@ body {
 }
 
 /* SlideShow des logos des organismes */
-.slidepartenaireindex img {
-  max-height: 150px;
-}
+  .slidepartenaireindex img {
+    max-height: 150px;
+  }
+
+/* pour masquer des éléments de listes (sp sheets) par exemple */  
+  .d-none {
+    display: none;
+  }
+
+/* boutons vers les fiches orga sur les fiches especes */ 
+/* on rajoute la spécificité "a" sinon c'est écrasé par les liens en vert */
+  a.btn-organisms-sheet{
+    background-color: #095773;
+    color: white !important;
+  }
+
+  #toggle-communes-btn, #toggle-observers-btn{
+    background-color: #095773;   /* Bleu Bootstrap */
+    color: white;                /* Texte blanc */
+    border-radius: 0.25rem;      /* Bords légèrement arrondis */
+    font-weight: bold;           /* Texte en gras */
+    border: none;                /* Supprimer le style de lien par défaut */
+    padding: 0.4em 0.75em;       /* Un peu d'air autour du texte */
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #toggle-communes-btn:hover, #toggle-observers-btn:hover {
+    background-color: #5fb80c;
+    color: white;
+    text-decoration: none;
+  }
