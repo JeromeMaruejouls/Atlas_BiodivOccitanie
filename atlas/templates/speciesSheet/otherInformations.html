@@ -86,21 +86,21 @@
                 {% endif %}
                 <p>
                     <span id="communes-list">
-                        {% for com in communes[:30] %}
+                        {% for com in communes[:100] %}
                             <a href="{{ url_for('main.ficheCommune', insee=com.insee) }}">{{ com.commune_maj }}</a>{% if not loop.last %} - {% endif %}
                         {% endfor %}
 
                         <span id="more-communes" class="d-none">
-                            {% if communes|length > 30 %}
+                            {% if communes|length > 100 %}
                                 - 
-                                {% for com in communes[30:] %}
+                                {% for com in communes[100:] %}
                                     <a href="{{ url_for('main.ficheCommune', insee=com.insee) }}">{{ com.commune_maj }}</a>{% if not loop.last %} - {% endif %}
                                 {% endfor %}
                             {% endif %}
                         </span>
                     </span>
 
-                    {% if communes|length > 30 %}
+                    {% if communes|length > 100 %}
                         <button id="toggle-communes-btn" class="btn btn-sm btn-link">Afficher plus</button>
                     {% endif %}
                 </p>
@@ -110,21 +110,21 @@
                 {% if configuration.DISPLAY_OBSERVERS %}
                     <div id="observateurs" class="tab-pane fade">
                         <span id="observers-list">
-                            {% for o in observers[:30] %}
+                            {% for o in observers[:100] %}
                                 <span>{{ o }}</span>{% if not loop.last %} - {% endif %}
                             {% endfor %}
 
                             <span id="more-observers" class="d-none">
-                                {% if observers|length > 30 %}
+                                {% if observers|length > 100 %}
                                     - 
-                                    {% for o in observers[30:] %}
+                                    {% for o in observers[100:] %}
                                         <span>{{ o }}</span>{% if not loop.last %} - {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             </span>
                         </span>
 
-                        {% if observers|length > 30 %}
+                        {% if observers|length > 100 %}
                             <button id="toggle-observers-btn" class="btn btn-sm btn-link">Afficher plus</button>
                         {% endif %}
                     </div>
