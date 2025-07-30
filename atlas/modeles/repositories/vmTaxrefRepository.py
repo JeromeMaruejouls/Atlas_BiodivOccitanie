@@ -200,3 +200,13 @@ def get_cd_ref(connection, cd_nom):
     results = connection.execute(text(sql), cdNom=cd_nom)
     row = results.fetchone()
     return row.cd_ref
+
+def get_group1_2_3_inpn(connection, cd_nom):
+    sql = """
+        SELECT group1_inpn,group2_inpn,group3_inpn
+        FROM atlas.vm_taxref AS t
+        WHERE t.cd_nom = :cdNom
+    """
+    results = connection.execute(text(sql), cdNom=cd_nom)
+    row = results.fetchone()
+    return row.cd_ref

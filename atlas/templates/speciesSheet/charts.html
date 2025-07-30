@@ -10,10 +10,20 @@
             <canvas id="monthChart"></canvas>
         </div>
 -->
-        <h4 class="title-bar title-spaced center strong">{{ _('decadely.obs') }}</h4>
-        <div class="chart-container" style="position: relative; height:300px; width:95%; margin:auto">
-            <canvas id="decadeChart"></canvas>
-        </div>
+        {% if (taxonomyGroupInpn.group2inpn == "Insectes") %}
+            <!-- GRAPHIQUE AVEC LES STADES DE VIE -->
+            <h4 class="title-bar title-spaced center strong">NOUVEAUX GRAPHE</h4>
+            <div class="chart-container" style="position: relative; height:300px; width:95%; margin:auto">
+                <canvas id="decadeChart"></canvas>
+            </div>
+        {% else %}
+            <!-- GRAPHIQUE BASIQUE -->
+            <h4 class="title-bar title-spaced center strong">{{ _('decadely.obs') }}</h4>
+            <div class="chart-container" style="position: relative; height:300px; width:95%; margin:auto">
+                <canvas id="decadeChart"></canvas>
+            </div>
+        {% endif %}        
+
 
         <h4 class="title-bar title-spaced center strong">{{ _('bdefaut.obs') }}</h4>
         <h5 class="center"> Defaut (2002), Jaulin, Defaut & Puissant (2011) </h5>
