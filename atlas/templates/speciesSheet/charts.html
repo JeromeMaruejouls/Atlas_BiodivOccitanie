@@ -10,9 +10,10 @@
             <canvas id="monthChart"></canvas>
         </div>
 -->
-        {% if (taxonomyGroupInpn.group2inpn == "Insectes") %}
+
+        {% if (taxonomyGroupInpn["group2_inpn"] == "Insectes") %}
             <!-- GRAPHIQUE AVEC LES STADES DE VIE -->
-            <h4 class="title-bar title-spaced center strong">NOUVEAUX GRAPHE</h4>
+            <h4 class="title-bar title-spaced center strong">NOUVEAU GRAPHE LIFE STAGE</h4>
             <div class="chart-container" style="position: relative; height:300px; width:95%; margin:auto">
                 <canvas id="decadeChart"></canvas>
             </div>

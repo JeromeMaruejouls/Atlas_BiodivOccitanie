@@ -239,7 +239,7 @@ def ficheEspece(cd_nom):
     synonyme = vmTaxrefRepository.getSynonymy(connection, cd_ref)
     communes = vmCommunesRepository.getCommunesObservationsChilds(connection, cd_ref)
     taxonomyHierarchy = vmTaxrefRepository.getAllTaxonomy(db_session, cd_ref)
-    taxonomyGroupInpn = vmTaxrefRepository.get_group1_2_3_inpn(db_session, cd_ref)
+    taxonomyGroupInpn = vmTaxrefRepository.get_group1_2_3_inpn(connection, cd_ref)
     firstPhoto = vmMedias.getFirstPhoto(connection, cd_ref, current_app.config["ATTR_MAIN_PHOTO"])
     photoCarousel = vmMedias.getPhotoCarousel(
         connection, cd_ref, current_app.config["ATTR_OTHER_PHOTO"]
