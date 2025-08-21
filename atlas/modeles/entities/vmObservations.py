@@ -17,6 +17,7 @@ class VmObservations(Base):
         Column("insee", String(5), index=True),
         Column("dateobs", Date, index=True),
         Column("observateurs", String(255)),
+        Column("life_stage", String(255)),
         Column("altitude_retenue", Integer, index=True),
         Column("cd_ref", Integer, index=True),
         Column("the_geom_point", Geometry(geometry_type="POINT", srid=4326)),

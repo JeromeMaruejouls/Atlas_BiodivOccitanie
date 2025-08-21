@@ -6,6 +6,7 @@ CREATE MATERIALIZED VIEW atlas.vm_observations AS
         s.insee,
         s.dateobs,
         s.observateurs,
+        s.life_stage,
         s.altitude_retenue,
         s.the_geom_point,
         s.effectif_total,
@@ -23,3 +24,4 @@ CREATE INDEX ON atlas.vm_observations (insee);
 CREATE INDEX ON atlas.vm_observations (altitude_retenue);
 CREATE INDEX ON atlas.vm_observations (dateobs);
 CREATE INDEX index_gist_vm_observations_the_geom_point ON atlas.vm_observations USING gist (the_geom_point);
+CREATE INDEX ON atlas.vm_observations (life_stage);

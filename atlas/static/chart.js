@@ -37,7 +37,7 @@ function getGradientDecade(ctx, chartArea) {
 
 
 //Generic vertical bar graph
-verticalBarChart = function (element, labels, values) {
+decadeBarChart = function (element, labels, values) {
     return new Chart(element, {
         type: 'bar',
         data: {
@@ -105,6 +105,137 @@ verticalBarChart = function (element, labels, values) {
                     }
                 }],
                 xAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    backgroundColor: function(context) {
+                        const chart = context.chart;
+                        const {ctx, chartArea} = chart;
+                
+                        if (!chartArea) {
+                            // This case happens on initial chart load
+                            return;
+                        }
+                        return getGradientDecade(ctx, chartArea);
+                    }
+                }]
+            },
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                  position: 'top',
+                  display: false
+                },
+            },
+            animation: {
+                onComplete: () => {
+                    delayedVert = true;
+                },
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayedVert) {
+                        delay = context.dataIndex * 100 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                }
+            }
+        }
+    });
+};
+
+
+//Decade with Life Stage vertical bar graph
+// Data Format :
+/*
+datasets: [
+    {
+      label: "oeuf",
+      backgroundColor: "#0353a4",
+      data: [9000,5000,5240,3520]
+    },
+    {
+      label: "juvenile",
+      backgroundColor: "#ff8552",
+      data: [3000,4000,6000,3500]
+    },
+    {
+      label: "adulte",
+      backgroundColor: "#4ecdc4",
+      data: [6000,7200,6500,4600]
+    }
+  ]
+
+*/
+decadeLifeStBarChart = function (element, labels, values) {
+    return new Chart(element, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'observations',
+                data: values,
+                borderColor: [
+                    '#A4BEE1','#A4BEE1','#A4BEE1','#A4BEE1','#A4BEE1','#A4BEE1','#A4BEE1','#A4BEE1',
+                    '#A4DB72',//printemps
+                    '#A4DB72','#A4DB72','#A4DB72','#A4DB72','#A4DB72','#A4DB72','#A4DB72','#A4DB72',
+                    '#FAF36B',//été
+                    '#FAF36B','#FAF36B','#FAF36B','#FAF36B','#FAF36B','#FAF36B','#FAF36B','#FAF36B',
+                    '#FFCD72',//automne
+                    '#FFCD72','#FFCD72','#FFCD72','#FFCD72','#FFCD72','#FFCD72','#FFCD72','#FFCD72',
+                    '#A4BEE1' //hiver
+                ],
+                backgroundColor: [
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4BEE180',
+                    '#A4DB7280',//printemps
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#A4DB7280',
+                    '#FAF36B80',//été
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FAF36B80',
+                    '#FFCD7280',//automne
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#FFCD7280',
+                    '#A4BEE180' //hiver
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    stacked: true,
                     gridLines: {
                         display: false
                     },
@@ -274,7 +405,10 @@ var altiChartElement = document.getElementById('altiChart');
 const altiChart = horizontalBarChart(altiChartElement, getChartDatas(dataset, 'altitude'), getChartDatas(dataset, 'value'));
 
 var decadeChartElement = document.getElementById('decadeChart');
-const decadeChart = verticalBarChart(decadeChartElement, decades_name, getChartDatas(decades_value, 'value'));
+const decadeChart = decadeBarChart(decadeChartElement, decades_name, getChartDatas(decades_value, 'value'));
+
+var decadeLifeStChartElement = document.getElementById('decadeLifeStChart');
+const decadeLifeStChart = decadeLifeStBarChart(decadeLifeStChartElement, decades_name, getChartDatas(decades_value, 'value'));
 
 var bdefautChartElement = document.getElementById('bdefautChart');
 const bdefautChart = bDefautPieChart(bdefautChartElement, bdefaut_name, getChartDatas(bdefaut_value, 'value'), colorBDefaut_tab);

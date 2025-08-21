@@ -46,7 +46,8 @@ AS SELECT s.id_synthese,
     s.id_dataset, 
     s.cd_nom, 
     s.date_min AS dateobs, 
-    s.observers AS observateurs, 
+    s.observers AS observateurs,
+    life.mnemonique AS life_stage, 
     (s.altitude_min + s.altitude_max) / 2 AS altitude_retenue, 
         CASE 
             WHEN s.id_nomenclature_sensitivity IS NOT NULL AND s.id_nomenclature_diffusion_level IS NOT NULL THEN 
@@ -80,4 +81,5 @@ AS SELECT s.id_synthese,
      LEFT JOIN synthese.t_nomenclatures dl ON s.id_nomenclature_diffusion_level = dl.id_nomenclature 
      LEFT JOIN synthese.t_nomenclatures st ON s.id_nomenclature_observation_status = st.id_nomenclature
      LEFT JOIN synthese.jdd_hors_biodiv dif ON dif.id_dataset = s.id_dataset
+     LEFT JOIN synthese.t_nomenclatures life ON life.id_nomenclature = s.id_nomenclature_life_stage
   WHERE areas.type_code::text = 'COM'::text AND (NOT dl.cd_nomenclature::text = '4'::text OR s.id_nomenclature_diffusion_level IS NULL) AND (NOT sens.cd_nomenclature::text = '4'::text OR s.id_nomenclature_sensitivity IS NULL) AND st.cd_nomenclature::text = 'Pr'::text AND s.id_nomenclature_valid_status <> 320 AND s.id_nomenclature_valid_status <> 321 AND dif.id_dataset IS NULL;

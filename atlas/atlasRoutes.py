@@ -235,6 +235,7 @@ def ficheEspece(cd_nom):
     altitudes = vmAltitudesRepository.getAltitudesChilds(connection, cd_ref)
     months = vmMoisRepository.getMonthlyObservationsChilds(connection, cd_ref)
     decades = vmDecadesRepository.getDecadelyObservationsChilds(connection, cd_ref)
+    decadesLifeSt = vmDecadesRepository.getDecadelyLifeStObservationsChilds(connection, cd_ref)
     bdefaut = vmBDefautRepository.getBDefautObservationsChilds(connection, cd_ref)
     synonyme = vmTaxrefRepository.getSynonymy(connection, cd_ref)
     communes = vmCommunesRepository.getCommunesObservationsChilds(connection, cd_ref)
@@ -280,6 +281,7 @@ def ficheEspece(cd_nom):
         altitudes=altitudes,
         months=months,
         decades=decades,
+        decadesLifeSt=decadesLifeSt,
         bdefaut=bdefaut,
         synonyme=synonyme,
         communes=communes,
