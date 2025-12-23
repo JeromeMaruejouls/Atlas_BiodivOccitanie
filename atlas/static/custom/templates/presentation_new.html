@@ -8,191 +8,430 @@
 
 <style>
 
-/******************************/
-/*   STYLE PAGE PRESENTATION  */
-/******************************/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.presentation-page {
-    padding: 30px 0;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
 
-/* Bloc généraux */
-.presentation-page .block {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 25px 30px;
-    margin-bottom: 35px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+        .container-fluid {
+            width: 100%;
+        }
 
-/* Titre principal */
-.presentation-page .section-header h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 40px;
-    text-align: center;
-    margin-bottom: 25px;
-    color: #095773;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-/* Image header */
-.presentation-page .header-image {
-    display: block;
-    margin: auto;
-    max-width: 900px;
-    width: 100%;
-    border-radius: 10px;
-}
+        /******************************/
+        /*   STYLE PAGE BIODIV        */
+        /******************************/
 
-/* Sous-titres */
-.presentation-page h2,
-.presentation-page h3 {
-    font-family: 'Oswald', sans-serif;
-    margin-bottom: 15px;
-    color: #095773;
-}
+        .biodiv-page {
+            padding: 30px 0;
+        }
 
-.presentation-page h2 {
-    font-size: 32px;
-}
+        /* Blocs généraux - Harmonisés avec la page présentation */
+        .biodiv-page .block {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
 
-.presentation-page h3 {
-    font-size: 24px;
-}
+        /* Header principal - Sans préfixe pour être appliqué même hors container */
+        .section-header.biodiv-header {
+            background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 0;
+            margin-bottom: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-/* Listes */
-.presentation-page .styled-list li {
-    margin-bottom: 6px;
-    line-height: 1.5;
-}
+        .section-header.biodiv-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: white !important;
+        }
 
-.presentation-page .two-columns {
-    columns: 2;
-    column-gap: 40px;
-}
+        .section-header.biodiv-header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            color: white;
+        }
 
-/* Encadrés membres fondateurs */
-.presentation-page .info-block {
-    background: #f7f8f4;
-    border-left: 4px solid var(--main-color);
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-}
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
 
-/* Lien bouton */
-.presentation-page .btn-link {
-    font-weight: bold;
-    color: #095773;
-}
+        /* Navigation sticky - Sans préfixe pour être appliqué même hors container */
+        .nav-sticky.biodiv-nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            margin-bottom: 0;
+            border-radius: 0;
+        }
 
-.presentation-page .btn-link:hover {
-    color: var(--main-color);
-    text-decoration: underline;
-}
+        .nav-sticky.biodiv-nav .nav-container {
+            display: flex !important;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+            list-style: none !important;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .nav-sticky.biodiv-nav .nav-container a {
+            display: inline-block !important;
+        }
+
+        .nav-sticky.biodiv-nav .nav-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f7f8f4;
+            border-radius: 20px;
+            text-decoration: none !important;
+            color: #333 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-sticky.biodiv-nav .nav-link:hover {
+            background: #095773 !important;
+            color: white !important;
+            transform: translateY(-2px);
+            text-decoration: none !important;
+        }
+
+        /* Titres de sections - Harmonisés */
+        .biodiv-page h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            color: #095773;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #095773;
+        }
+
+        .biodiv-page h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: #095773;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Encadrés highlight - Style cohérent avec info-block */
+        .biodiv-page .highlight-box,
+        .biodiv-page .info-block {
+            background: #f7f8f4;
+            border-left: 4px solid #095773;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+        }
+
+        .biodiv-page .highlight-box h3,
+        .biodiv-page .highlight-box h4,
+        .biodiv-page .info-block h3,
+        .biodiv-page .info-block h4 {
+            color: #095773;
+            margin-bottom: 15px;
+        }
+
+        /* Listes avec icônes */
+        .biodiv-page .icon-list,
+        .biodiv-page .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .biodiv-page .icon-list li,
+        .biodiv-page .styled-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .biodiv-page .icon-list li:before,
+        .biodiv-page .styled-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 25px;
+            height: 25px;
+            background: #095773;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Style pour listes sur 2 colonnes */
+        .biodiv-page .styled-list.two-columns {
+            column-count: 2;
+            column-gap: 30px;
+        }
+
+        .biodiv-page .styled-list a {
+            color: #095773;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .biodiv-page .styled-list a:hover {
+            color: #0a6d8f;
+            text-decoration: underline;
+        }
+
+        /* Boutons CTA */
+        .biodiv-page .btn-link,
+        .biodiv-page .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(9, 87, 115, 0.3);
+        }
+
+        .biodiv-page .btn-link:hover,
+        .biodiv-page .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(9, 87, 115, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Paragraphes */
+        .biodiv-page p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .biodiv-page p b {
+            color: #095773;
+            font-weight: 600;
+        }
+
+        /* Section Contact */
+        .biodiv-page .block.contact-section {
+            background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+            color: white;
+        }
+
+        .biodiv-page .block.contact-section h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .biodiv-page .block.contact-section ul li:before {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .biodiv-page .block.contact-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .biodiv-page .section-header.biodiv-header h1 {
+                font-size: 32px;
+            }
+            
+            .biodiv-page h2 {
+                font-size: 28px;
+            }
+            
+            .biodiv-page h3 {
+                font-size: 22px;
+            }
+            
+            .biodiv-page .block {
+                padding: 20px;
+            }
+
+            .biodiv-page .styled-list.two-columns {
+                column-count: 1;
+            }
+        }
+
+        /* Conteneur vidéo responsive */
+        .biodiv-page .video-container {
+            position: relative;
+            width: 75%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .biodiv-page .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
 
 </style>
 
-
-
-<div class="container-fluid presentation-page" id="page">
-
-    <div class="container">
-
+    <div class="container-fluid biodiv-page">
+        
         <!-- HEADER -->
-        <section class="block section-header">
-            <h1>OC'nat, l'Union des associations naturalistes d'Occitanie</h1>
-
-            <img class="header-image" 
-                 src="{{url_for('static', filename='custom/images/ocnat_visuel_cropped.jpg') }}" 
-                 alt="ocnat-visuel">
-        </section>
-
-
-        <!-- Présentation générale -->
-        <section class="block">
-            <h2>Présentation générale</h2>
-            <h3>Objectifs</h3>
-
-            <p>Fondée en 2017, l’Union des associations naturalistes d’Occitanie est aujourd’hui composée de 19 associations naturalistes. Issue d’une volonté partagée de développer des relations plus étroites, stables et structurées au sein de la grande diversité d’associations naturalistes, OC’nat a comme ambition de développer une collaboration structurée entre les associations naturalistes occitanes, au sein de laquelle le partage des compétences et des savoir-faire permette d’enrichir la qualité de projets portés en commun. Les objectifs de l’Union des associations naturalistes d’Occitanie sont les suivants :</p>
-
-            <ul class="styled-list">
-                <li>Établir un lien étroit entre les associations adhérentes afin de permettre une collaboration et une concertation permanente, en particulier dans le cadre de leurs champs d’actions communs ;</li>
-		<li>Promouvoir de manière concertée les buts et les réalisations des associations adhérentes ;</li>
-                <li>Assurer une meilleure articulation des travaux entre les échelons départemental et régional ;</li>
-                <li>Aider à la mise en commun des compétences;</li>
-                <li>Porter des projets à dimension régionale et nationale, voire internationale avec les pays limitrophes ;</li>
-                <li>Développer la concertation avec les pouvoirs publics et les organismes privés;</li>
-                <li>Coordonner les relations avec d'autres structures ayant des objectifs similaires;</li>
-            </ul>
-
-            <p><a class="btn-link" href="https://ocnat.fr/" target="_blank">En savoir plus sur OC'nat</a></p>
-        </section>
-
-
-        <!-- OC'nat -->
-        <section class="block">
-            <h3>OC'nat – Union des associations naturalistes d’Occitanie</h3>
-
-            <p>OC'nat est une association loi 1901 ayant pour objectif de rassembler les associations naturalistes de la région Occitanie. Elle a été crée en 2017, suite à la fusion des régions Midi-Pyrénées et Languedoc-Roussillon. Les associations qui se sont lancées dans l'aventure sont :</p>
-
-            <ul class="styled-list two-columns">
-                <li><a href="https://www.adena-bagnas.fr/" target="_blank">ADENA</a></li>
-                <li><a href="https://www.alepe48.fr/" target="_blank">ALEPE</a></li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/4') }}">ANA-CEN Ariège</a></li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/10') }}">Association LUS</a></li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/11') }}">Aude Nature</a></li>
-                <li><a href="https://cogard.org/" target="_blank">COGard</a></li>
-                <li><a href="https://www.cen-occitanie.org/" target="_blank">CEN Occitanie</a></li>
-                <li><a href="https://www.audeclaire.org/" target="_blank">Aude Claire</a></li>
-                <li><a href="https://www.gnaum.fr/" target="_blank">GNAUM</a></li>
-                <li><a href="https://asso-gclr.fr/" target="_blank">GCLR</a></li>
-                <li><a href="https://www.gor66.fr/" target="_blank">GOR</a></li>
-                <li>Hérault Nature</li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/31') }}">Les Écologistes de l'Euzière</a></li>
-                <li><a href="https://occitanie.lpo.fr/" target="_blank">LPO Occitanie</a></li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/3') }}">Nature En Occitanie</a></li>
-                <li><a href="{{url_for('main.get_staticpages', page='organism/6') }}">OPIE</a></li>
-                <li><a href="https://www.opie-mp.fr/" target="_blank">Opie Midi-Pyrénées</a></li>
-                <li><a href="http://orchidees-du-languedoc.fr/SFOLanguedoc/index.php" target="_blank">SFO-L</a></li>
-                <li><a href="https://s2hnh.org/" target="_blank">SHHNH</a></li>
-                <li><a href="https://www.ssntg82.com/" target="_blank">SSNTG</a></li>
-                <li><a href="https://www.tela-botanica.org/" target="_blank">Tela Botanica</a></li>
-            </ul>
-        </section>
-
-
-        <!-- Membres fondateurs -->
-        <section class="block">
-            <h3>Membres fondateurs d'OC'nat</h3>
-
-            <div class="info-block">
-		    <p><b>Nature En Occitanie</b>, membre initiateur d'OC'nat, œuvre au quotidien pour la protection et la valorisation de notre patrimoine naturel. Sensibiliser tous les publics, connaître les espèces et leurs milieux pour mieux les protéger, gérer les espaces naturels et accompagner tous ceux qui souhaitent agir, alerter les pouvoirs publics... Voilà les grands axes autour desquels Nature En Occitanie agit. En place depuis que l'Homme a marché sur la lune (ça remonte hein !), l'association, forte de plus de 700 adhérents et d'une équipe d'une quarantaine de salariés, rassemble les novices curieux comme les connaisseurs passionnés autour d'animations, d'ateliers, de conférences, de sorties nature ou encore de prospections et suivis naturalistes. Bref, leur slogan parle de lui même : Agir ensemble pour la nature ! https://www.youtube.com/watch?v=5vQwXveBESc&t=22s Pour en savoir davantage : http://www.natureo.org/ !</p>
-            </div>
-            <div class="info-block">
-		    <p>Place aujourd'hui au deuxième des cinq membres initiateurs d’OC’nat : <b>Les Écologistes de l'Euzière</b> ! Nés la même année que Leonardo DiCaprio, les Écologistes de l'Euzière œuvrent comme lui, bien qu’à une échelle plus locale, en faveur de l’environnement. Fondée par des botanistes de l’Université de Montpellier souhaitant transmettre leurs connaissances, l’association poursuit cet objectif au travers d’actions de sensibilisation à la gestion durable des paysages méditerranéens pour tous publics, ainsi qu’en éditant des ouvrages pédagogiques et richement illustrés. Elle développe par ailleurs une activité de conseil et d’étude, mettant son expertise au service des acteurs du territoire. Chez les Écolos, on vous parle beaucoup de salades mais on ne vous en raconte pas, et on vous invite à apprendre “sur le terrain plutôt que dans les livres”, lors des “Samedis Buissonniers”, des sorties des “Brins de botanistes” ou du groupe faune. Des conférences très variées sont également organisées, ainsi que des stages de formation en écologie et en animation. Rendez-vous sur leur site internet pour découvrir l’ensemble de leurs animations : http://www.euziere.org/wakka.php?wiki=LesActivites !</p>
-            </div>
-            <div class="info-block">
-		    <p>A l'honneur ce soir : le <b>COGard</b> - Centre Ornithologique du Gard ! Le Centre Ornithologique du Gard, ou COGard pour les intimes, fait lui aussi partie des cinq membres initiateurs d’OC'nat. Né la même année que la célèbre Kim Kardashian, il n’est pas aussi actif sur twitter, instagram et snapchat, mais travaille dur sur le terrain ! Créé par quelques passionnés d’oiseaux, le COGard, avec ses 200 adhérents et 4 salariés permanents, a pour but l’étude et la protection de la faune et la flore du département qui lui donne son nom. Ses activités concernent principalement les oiseaux et il coordonne notamment, à l’échelle du Gard, le Réseau Circaète et les Plans Nationaux d’Actions de l’Aigle de Bonelli et de l’Outarde canepetière. Depuis une dizaine d’années, l’association a en outre progressivement étendu son champ d’action en participant par exemple à la réalisation d’atlas sur les amphibiens, reptiles, papillons et libellules, et a également développé un volet sensibilisation à l’environnement. Sorties et conférences naturalistes sont ainsi l’occasion de découvrir les richesses naturelles du Gard et la beauté des oiseaux... Retrouvez leurs activités sur leur site internet : http://cogard.org/ !</p>
-            </div>
-            <div class="info-block">
-                <p>On continue le tour de table avec le quatrième des cinq membres initiateurs d'OC'nat ! : Fondée alors que naissait Martin Fourcade, sportif français le plus titré aux Jeux-Olympiques, l'Association des Naturalistes de l'Ariège est presque aussi exceptionnelle, puisque c’est la seule structure française à œuvrer dans le cadre de trois réseaux majeurs : celui des Conservatoires d’Espaces Naturels, des Centres Permanents d’Initiatives pour l’Environnement, et Éducation Pyrénées Vivantes. Elle agit ainsi sur tous les plans : expertise écologique, gestion des espaces naturels, accompagnement des collectivités, et sensibilisation et éducation à l’environnement. Chaque année, l’ANA-CEN Ariège propose également un calendrier des sorties : “Les 4 saisons de l’Ana’ture”, qui vous propose de rejoindre les 500 adhérents et la vingtaine de salariés de l’association lors de nombreuses sorties nature à la découverte des trésors naturels ariégeois, mais aussi lors de soirées-diaporamas ou contes et de chantiers nature. Retrouvez leur calendrier 2018 sur leur site : https://ariegenature.fr/le-calendrier-de-lanature-2018.../ !</p>
-            </div>
-            <div class="info-block">
-		    <p>Nous vous faisons aujourd'hui découvrir le dernier des cinq membres initiateurs d'OC'nat ! L’<b>Association Lozérienne pour l’Étude et la Protection de l’Environnement</b> (nom de code : ALEPE ), fondée alors que sortait sur borne d’arcade le monument du jeu vidéo Space Invaders, n’a pas comme ces aliens l’objectif d’envahir notre monde, mais plutôt de l’étudier, le protéger, et sensibiliser à sa biodiversité. C’est ainsi qu’elle participe sur le territoire lozérien à de nombreux inventaires, études et comptages, d’envergure départementale à internationale (Suivi Temporel des Oiseaux Communs, Plans Nationaux d’Action, comptage Wetlands International…). Appuyée de trois salariés, l’association siège dans les commissions locales où elle défend la préservation des espaces naturels, et a par ailleurs édité un atlas sur la faune sauvage de Lozère, ainsi qu’un guide des itinéraires naturalistes du département. Conscients de l’importance de sensibiliser tous les publics à la richesse du patrimoine naturel, bénévoles et salariés de l’ALEPE organisent des animations auprès des scolaires, des professionnels et du grand public ! Retrouvez leurs actions sur leur site : https://www.alepe48.fr/</p>
+        <section class="section-header biodiv-header">
+            <div class="container">
+                <h1>OC'nat, l'Union des associations naturalistes d'Occitanie</h1>
+                <p>Ensemble pour la protection et la valorisation du patrimoine naturel</p>
             </div>
         </section>
 
-        <!-- Contact -->
-        <section class="block">
-            <h2>Contact</h2>
-            <ul class="styled-list">
-                <li>Jérôme Maruéjouls, responsable technique : j.maruejouls@natureo.org</li>
-                <li>Thibault Rafton, co-président d'OC'nat : ocnat.assos@gmail.com</li>
-            </ul>
-        </section>
+        <div class="container">
+            <!-- Présentation générale -->
+            <section class="block">
+                <h2>Présentation générale</h2>
+                <h3>Objectifs</h3>
+
+                <p>Fondée en 2017, l'Union des associations naturalistes d'Occitanie est aujourd'hui composée de 19 associations naturalistes. Issue d'une volonté partagée de développer des relations plus étroites, stables et structurées au sein de la grande diversité d'associations naturalistes, OC'nat a comme ambition de développer une collaboration structurée entre les associations naturalistes occitanes, au sein de laquelle le partage des compétences et des savoir-faire permette d'enrichir la qualité de projets portés en commun. Les objectifs de l'Union des associations naturalistes d'Occitanie sont les suivants :</p>
+
+                <ul class="styled-list">
+                    <li>Établir un lien étroit entre les associations adhérentes afin de permettre une collaboration et une concertation permanente, en particulier dans le cadre de leurs champs d'actions communs ;</li>
+                    <li>Promouvoir de manière concertée les buts et les réalisations des associations adhérentes ;</li>
+                    <li>Assurer une meilleure articulation des travaux entre les échelons départemental et régional ;</li>
+                    <li>Aider à la mise en commun des compétences;</li>
+                    <li>Porter des projets à dimension régionale et nationale, voire internationale avec les pays limitrophes ;</li>
+                    <li>Développer la concertation avec les pouvoirs publics et les organismes privés;</li>
+                    <li>Coordonner les relations avec d'autres structures ayant des objectifs similaires;</li>
+                </ul>
+
+                <p style="margin-top: 25px;"><a class="btn-link" href="#">En savoir plus sur OC'nat</a></p>
+            </section>
+
+            <!-- OC'nat -->
+            <section class="block">
+                <h2>OC'nat – Union des associations naturalistes d'Occitanie</h2>
+
+                <p>OC'nat est une association loi 1901 ayant pour objectif de rassembler les associations naturalistes de la région Occitanie. Elle a été crée en 2017, suite à la fusion des régions Midi-Pyrénées et Languedoc-Roussillon. Les associations qui se sont lancées dans l'aventure sont :</p>
+
+                <ul class="styled-list two-columns">
+                    <li><a href="#">ADENA</a></li>
+                    <li><a href="#">ALEPE</a></li>
+                    <li><a href="#">ANA-CEN Ariège</a></li>
+                    <li><a href="#">Association LUS</a></li>
+                    <li><a href="#">Aude Nature</a></li>
+                    <li><a href="#">COGard</a></li>
+                    <li><a href="#">CEN Occitanie</a></li>
+                    <li><a href="#">Aude Claire</a></li>
+                    <li><a href="#">GNAUM</a></li>
+                    <li><a href="#">GCLR</a></li>
+                    <li><a href="#">GOR</a></li>
+                    <li><a href="#">Hérault Nature</a></li>
+                    <li><a href="#">Les Écologistes de l'Euzière</a></li>
+                    <li><a href="#">LPO Occitanie</a></li>
+                    <li><a href="#">Nature En Occitanie</a></li>
+                    <li><a href="#">OPIE</a></li>
+                    <li><a href="#">Opie Midi-Pyrénées</a></li>
+                    <li><a href="#">SFO-L</a></li>
+                    <li><a href="#">SHHNH</a></li>
+                    <li><a href="#">SSNTG</a></li>
+                    <li><a href="#">Tela Botanica</a></li>
+                </ul>
+            </section>
+
+            <!-- Membres fondateurs -->
+            <section class="block">
+                <h2>Membres fondateurs d'OC'nat</h2>
+
+                <div class="info-block">
+                    <p><b>Nature En Occitanie</b>, membre initiateur d'OC'nat, œuvre au quotidien pour la protection et la valorisation de notre patrimoine naturel.
+Sensibiliser tous les publics, connaître les espèces et leurs milieux pour mieux les protéger, gérer les espaces naturels et accompagner tous ceux qui souhaitent agir, alerter les pouvoirs publics... Voilà les grands axes autour desquels Nature En Occitanie agit. En place depuis que l'Homme a marché sur la lune (ça remonte hein !), l'association, forte de plus de 700 adhérents et d'une équipe d'une quarantaine de salariés, rassemble les novices curieux comme les connaisseurs passionnés autour d'animations, d'ateliers, de conférences, de sorties nature ou encore de prospections et suivis naturalistes. Bref, leur slogan parle de lui même : <b>Agir ensemble pour la nature ! </b>
+                  <p style="margin-top: 20px;"><a class="btn-link" href="http://www.natureo.org/" target="_blank">Visiter leur site</a></p>
+</div>
+              
+<div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/5vQwXveBESc" 
+        title="Titre de la vidéo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+              
+              
+                <div class="info-block">
+                    <p>Place aujourd'hui au deuxième des cinq membres initiateurs d'OC'nat : <b>Les Écologistes de l'Euzière</b> ! Nés la même année que Leonardo DiCaprio, les Écologistes de l'Euzière œuvrent comme lui, bien qu’à une échelle plus locale, en faveur de l’environnement. Fondée par des botanistes de l’Université de Montpellier souhaitant transmettre leurs connaissances, l’association poursuit cet objectif au travers d’actions de sensibilisation à la gestion durable des paysages méditerranéens pour tous publics, ainsi qu’en éditant des ouvrages pédagogiques et richement illustrés. Elle développe par ailleurs une activité de conseil et d’étude, mettant son expertise au service des acteurs du territoire.
+                            Chez les Écolos, on vous parle beaucoup de salades mais on ne vous en raconte pas, et on vous invite à apprendre “sur le terrain plutôt que dans les livres”, lors des “Samedis Buissonniers”, des sorties des “Brins de botanistes” ou du groupe faune. Des conférences très variées sont également organisées, ainsi que des stages de formation en écologie et en animation.
+                            Rendez-vous sur leur site internet pour découvrir l’ensemble de leurs animations !
+                            </p>
+                  <p style="margin-top: 20px;"><a class="btn-link" href="http://www.euziere.org" target="_blank">Visiter leur site</a></p>
+              </div>
+
+                <div class="info-block">
+                    <p>A l'honneur ce soir : le <b>COGard</b> - Centre Ornithologique du Gard ! Le Centre Ornithologique du Gard, ou COGard pour les intimes, fait lui aussi partie des cinq membres initiateurs d’OC'nat. Né la même année que la célèbre Kim Kardashian, il n’est pas aussi actif sur twitter, instagram et snapchat, mais travaille dur sur le terrain ! Créé par quelques passionnés d’oiseaux, le COGard, avec ses 200 adhérents et 4 salariés permanents, a pour but l’étude et la protection de la faune et la flore du département qui lui donne son nom. Ses activités concernent principalement les oiseaux et il coordonne notamment, à l’échelle du Gard, le Réseau Circaète et les Plans Nationaux d’Actions de l’Aigle de Bonelli et de l’Outarde canepetière. Depuis une dizaine d’années, l’association a en outre progressivement étendu son champ d’action en participant par exemple à la réalisation d’atlas sur les amphibiens, reptiles, papillons et libellules, et a également développé un volet sensibilisation à l’environnement. Sorties et conférences naturalistes sont ainsi l’occasion de découvrir les richesses naturelles du Gard et la beauté des oiseaux...
+</p>
+                  <p style="margin-top: 20px;"><a class="btn-link" href="http://cogard.org/" target="_blank">Visiter leur site</a></p>
+              </div>
+                  
+                <div class="info-block">
+                    <p>On continue le tour de table avec le quatrième des cinq membres initiateurs d'OC'nat ! : Fondée alors que naissait Martin Fourcade, sportif français le plus titré aux Jeux-Olympiques, l'Association des Naturalistes de l'Ariège
+                            est presque aussi exceptionnelle, puisque c’est la seule structure française à œuvrer dans le cadre de trois réseaux majeurs : celui des Conservatoires d’Espaces Naturels, des Centres Permanents d’Initiatives pour l’Environnement, et Éducation Pyrénées Vivantes. Elle agit ainsi sur tous les plans : expertise écologique, gestion des espaces naturels, accompagnement des collectivités, et sensibilisation et éducation à l’environnement. Chaque année, l’ANA-CEN Ariège propose également un calendrier des sorties : “Les 4 saisons de l’Ana’ture”, qui vous propose de rejoindre les 500 adhérents et la vingtaine de salariés de l’association lors de nombreuses sorties nature à la découverte des trésors naturels ariégeois, mais aussi lors de soirées-diaporamas ou contes et de chantiers nature.</p>
+                  <p style="margin-top: 20px;"><a class="btn-link" href="https://ariegenature.fr/" target="_blank">Visiter leur site</a></p>             
+                </div>
+
+                <div class="info-block">
+                    <p>Nous vous faisons aujourd'hui découvrir le dernier des cinq membres initiateurs d'OC'nat ! L'<b>Association Lozérienne pour l'Étude et la Protection de l'Environnement</b> (nom de code : ALEPE), fondée alors que sortait sur borne d’arcade le monument du jeu vidéo Space Invaders, n’a pas comme ces aliens l’objectif d’envahir notre monde, mais plutôt de l’étudier, le protéger, et sensibiliser à sa biodiversité. C’est ainsi qu’elle participe sur le territoire lozérien à de nombreux inventaires, études et comptages, d’envergure départementale à internationale (Suivi Temporel des Oiseaux Communs, Plans Nationaux d’Action, comptage Wetlands International…). Appuyée de trois salariés, l’association siège dans les commissions locales où elle défend la préservation des espaces naturels, et a par ailleurs édité un atlas sur la faune sauvage de Lozère, ainsi qu’un guide des itinéraires naturalistes du département. Conscients de l’importance de sensibiliser tous les publics à la richesse du patrimoine naturel, bénévoles et salariés de l’ALEPE organisent des animations auprès des scolaires, des professionnels et du grand public </p>
+                  <p style="margin-top: 20px;"><a class="btn-link" href="https://www.alepe48.fr/" target="_blank">Visiter leur site</a></p>             
+                </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section class="block contact-section">
+                <h2>Contact</h2>
+                <ul class="styled-list">
+                    <li>Jérôme Maruéjouls, responsable technique : <a href="mailto:j.maruejouls@natureo.org">j.maruejouls@natureo.org</a></li>
+                    <li>Thibault Rafton, co-président d'OC'nat : <a href="mailto:ocnat.assos@gmail.com">ocnat.assos@gmail.com</a></li>
+                </ul>
+            </section>
+        </div>
 
     </div>
-</div>
+
+
 
 {% endblock %}
-
