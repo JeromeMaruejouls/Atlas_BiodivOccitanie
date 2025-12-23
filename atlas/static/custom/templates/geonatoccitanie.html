@@ -1,0 +1,760 @@
+
+{% extends "templates/core/layout.html" %}
+
+{% block title %}
+{{ _('atlas.presentation') }}
+{% endblock %}
+
+{% block content %}
+<!-- AJOUTER MON CONTENU HTML ici -->
+<style>
+
+
+/******************************/
+/*   STYLE PAGE BIODIV        */
+/******************************/
+
+.biodiv-page {
+    padding: 30px 0;
+}
+
+/* Blocs généraux - Harmonisés avec la page présentation */
+.biodiv-page .block {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Header principal - Sans préfixe pour être appliqué même hors container */
+.section-header.biodiv-header {
+    background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+    color: white;
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.section-header.biodiv-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: white !important;
+}
+
+.section-header.biodiv-header p {
+    font-size: 1.2em;
+    opacity: 0.95;
+    color: white;
+}
+
+/* Navigation sticky - Sans préfixe pour être appliqué même hors container */
+.nav-sticky.biodiv-nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 0;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.nav-sticky.biodiv-nav .nav-container {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+    list-style: none !important;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.nav-sticky.biodiv-nav .nav-container a {
+    display: inline-block !important;
+}
+
+.nav-sticky.biodiv-nav .nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #f7f8f4;
+    border-radius: 20px;
+    text-decoration: none !important;
+    color: #333 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-sticky.biodiv-nav .nav-link:hover {
+    background: #095773 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    text-decoration: none !important;
+}
+
+/* Titres de sections - Harmonisés */
+.biodiv-page h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: #095773;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #095773;
+}
+
+.biodiv-page h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    color: #095773;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Encadrés highlight - Style cohérent avec info-block */
+.biodiv-page .highlight-box {
+    background: #f7f8f4;
+    border-left: 4px solid #095773;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 6px;
+}
+
+.biodiv-page .highlight-box h3,
+.biodiv-page .highlight-box h4 {
+    color: #095773;
+    margin-bottom: 15px;
+}
+
+/* Listes avec icônes */
+.biodiv-page .icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.biodiv-page .icon-list li {
+    padding: 12px 0;
+    padding-left: 35px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.biodiv-page .icon-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 25px;
+    height: 25px;
+    background: #095773;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Diagramme de flux */
+.biodiv-page .flow-diagram {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.biodiv-page .flow-step {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.biodiv-page .flow-step:hover {
+    transform: translateY(-5px);
+}
+
+.biodiv-page .flow-step-number {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+    color: white;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+.biodiv-page .flow-step h3 {
+    color: #095773;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.biodiv-page .flow-arrow {
+    font-size: 30px;
+    color: #bdc3c7;
+    align-self: center;
+}
+
+/* Grilles de cartes */
+.biodiv-page .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.biodiv-page .info-card {
+    background: #f7f8f4;
+    border-radius: 8px;
+    padding: 25px;
+    border-left: 4px solid #095773;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.biodiv-page .info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.biodiv-page .info-card h3 {
+    color: #095773;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.biodiv-page .info-card-icon {
+    font-size: 24px;
+}
+
+/* Grille partenaires */
+.biodiv-page .partners-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px 0;
+    padding: 30px;
+    background: #f7f8f4;
+    border-radius: 8px;
+}
+
+.biodiv-page .partner-box {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Boutons CTA */
+.biodiv-page .cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(9, 87, 115, 0.3);
+}
+
+.biodiv-page .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(9, 87, 115, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Section CTA finale */
+.biodiv-page .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+    color: white;
+    border-radius: 8px;
+}
+
+.biodiv-page .cta-section h2 {
+    color: white;
+    border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.biodiv-page .cta-section .btn-secondary {
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 2px solid white;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.biodiv-page .cta-section .btn-secondary:hover {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    text-decoration: none;
+}
+
+/* Schéma écosystème */
+.biodiv-page .ecosystem-diagram {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 40px 0;
+    align-items: center;
+}
+
+.biodiv-page .ecosystem-center {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(9, 87, 115, 0.3);
+}
+
+.biodiv-page .ecosystem-center h3 {
+    color: white;
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.biodiv-page .ecosystem-item {
+    text-align: center;
+    padding: 25px;
+    background: #f7f8f4;
+    border-radius: 8px;
+    border: 2px solid #095773;
+}
+
+.biodiv-page .ecosystem-item-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .biodiv-page .section-header h1 {
+        font-size: 32px;
+    }
+    
+    .biodiv-page h2 {
+        font-size: 28px;
+    }
+    
+    .biodiv-page h3 {
+        font-size: 22px;
+    }
+    
+    .biodiv-page .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .biodiv-page .block {
+        padding: 20px;
+    }
+    
+    .biodiv-page .ecosystem-diagram {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+       
+<div class="section-header biodiv-header">
+    <h1>Biodiv'Occitanie</h1>
+    <p>La plateforme collaborative de données naturalistes en Occitanie</p>
+</div>
+
+<nav class="nav-sticky biodiv-nav">
+    <div class="nav-container">
+        <a href="/geonatoccitanie#projet" class="nav-link">Le Projet</a>
+        <a href="/geonatoccitanie#saisie" class="nav-link">Saisie</a>
+        <a href="/geonatoccitanie#validation" class="nav-link">Validation</a>
+        <a href="/geonatoccitanie#diffusion" class="nav-link">Diffusion</a>
+        <a href="/geonatoccitanie#partenaires" class="nav-link">Partenaires</a>
+        <a href="/geonatoccitanie#outils" class="nav-link">Outils</a>
+    </div>
+</nav>
+
+<div class="container-fluid biodiv-page" id="page">
+    <div class="container">
+        <!-- Section Projet -->
+        <section id="projet" class="block">
+            <h2>Le Projet Biodiv'Occitanie</h2>
+            
+            <p style="font-size: 1.15em; margin-bottom: 25px;">
+                Biodiv'Occitanie est une plateforme collaborative portée par l'union des associations naturalistes d'Occitanie <strong>OC'Nat</strong> et co-administrée par un ensemble de structures partenaires. Elle permet de <strong>centraliser, valider et diffuser</strong> les observations naturalistes de tous les adhérents au sein d'une base de données régionale unique.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>🎯 Nos Objectifs</h3>
+                <p>
+                    Le projet répond à trois missions principales :
+                </p>
+                <ul class="icon-list" style="margin-top: 15px;">
+                    <li><strong>Centraliser</strong> les données naturalistes des structures adhérentes dans une base de données régionale unique</li>
+                    <li><strong>Valoriser</strong> ces connaissances via un atlas public et des outils d'analyse pour les adhérents</li>
+                    <li><strong>Mutualiser</strong> un outil de saisie commun (GeoNat'Occitanie) pour les structures qui n'en disposent pas</li>
+                </ul>
+            </div>
+
+            <!-- Schéma écosystème -->
+            <h3>🔄 L'Écosystème Biodiv'Occitanie</h3>
+            <div class="ecosystem-diagram">
+                <div class="ecosystem-center">
+                    <div style="font-size: 48px; margin-bottom: 10px;">💾</div>
+                    <h3>Base de Données<br>Biodiv'Occitanie</h3>
+                    <p style="margin: 0;">Centralisation régionale des observations naturalistes</p>
+                </div>
+                
+                <div class="ecosystem-item">
+                    <div class="ecosystem-item-icon">📝</div>
+                    <h4 style="color: #095773; margin: 10px 0;">Saisie</h4>
+                    <p style="margin: 0; color: #666;">GeoNat'Occitanie<br>(outil de terrain et web)</p>
+                </div>
+                
+                <div class="ecosystem-item">
+                    <div class="ecosystem-item-icon">🗺️</div>
+                    <h4 style="color: #095773; margin: 10px 0;">Diffusion</h4>
+                    <p style="margin: 0; color: #666;">Atlas Biodiv'Occitanie<br>(consultation publique)</p>
+                </div>
+            </div>
+            
+            <div class="card-grid" style="margin-top: 40px;">
+                <div class="info-card">
+                    <h3><span class="info-card-icon">🌿</span> Biodiversité</h3>
+                    <p>Plus de 29 000 espèces de faune et flore recensées en Occitanie</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="info-card-icon">👥</span> Contributeurs</h3>
+                    <p>Plus de 31 000 observateurs participent à l'enrichissement des connaissances</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="info-card-icon">📍</span> Observations</h3>
+                    <p>Plus de 4,5 millions d'observations géolocalisées dans la base</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Cycle de vie de la donnée -->
+        <section id="cycle" class="block">
+            <h2>Le Cycle de Vie d'une Donnée Naturaliste</h2>
+            
+            <p style="margin-bottom: 30px;">
+                Chaque observation suit un parcours rigoureux de la collecte sur le terrain jusqu'à sa diffusion publique et sa transmission aux dispositifs nationaux.
+            </p>
+            
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-step-number">1</div>
+                    <h3>Observation</h3>
+                    <p style="color: #666; font-size: 0.95em;">L'observateur repère une espèce sur le terrain et note les détails</p>
+                </div>
+                
+                <div class="flow-arrow">→</div>
+                
+                <div class="flow-step">
+                    <div class="flow-step-number">2</div>
+                    <h3>Saisie</h3>
+                    <p style="color: #666; font-size: 0.95em;">Enregistrement dans GeoNat'Occitanie (web ou mobile)</p>
+                </div>
+                
+                <div class="flow-arrow">→</div>
+                
+                <div class="flow-step">
+                    <div class="flow-step-number">3</div>
+                    <h3>Validation</h3>
+                    <p style="color: #666; font-size: 0.95em;">Vérification par des experts naturalistes</p>
+                </div>
+                
+                <div class="flow-arrow">→</div>
+                
+                <div class="flow-step">
+                    <div class="flow-step-number">4</div>
+                    <h3>Diffusion</h3>
+                    <p style="color: #666; font-size: 0.95em;">Publication sur l'atlas et transmission au SINP</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>⏱️ Mise à jour quotidienne</h3>
+                <p>Les données sont automatiquement reversées chaque nuit sur le portail Biodiv'Occitanie, assurant une actualisation permanente de l'atlas régional.</p>
+            </div>
+        </section>
+        
+        <!-- Section Saisie -->
+        <section id="saisie" class="block">
+            <h2>📝 Saisir vos Observations</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                Chaque observation naturaliste contribue à améliorer la connaissance de la biodiversité régionale. Les structures adhérentes qui ne disposent pas d'outil propre peuvent utiliser <strong>GeoNat'Occitanie</strong>, l'outil de saisie mutualisé.
+            </p>
+            
+            <h3>🎯 Pourquoi saisir vos observations ?</h3>
+            <ul class="icon-list">
+                <li><strong>Connaissance scientifique :</strong> Vos données alimentent la recherche sur la biodiversité</li>
+                <li><strong>Suivi des populations :</strong> Les observations régulières permettent d'identifier les tendances</li>
+                <li><strong>Alertes conservation :</strong> Signaler les espèces menacées ou les pressions sur les habitats</li>
+                <li><strong>Science participative :</strong> Contribuer activement à la protection de la nature</li>
+            </ul>
+            
+            <h3>📱 Outils de saisie disponibles</h3>
+            
+            <div class="card-grid">
+                <div class="info-card" style="background: linear-gradient(135deg, #d5f4e6 0%, #a7d8c0 100%);">
+                    <h3><span class="info-card-icon">💻</span> Saisie Web</h3>
+                    <p>Module Occtax : saisie détaillée avec cartographie interactive, idéal pour la saisie en masse depuis votre bureau</p>
+                </div>
+                
+                <div class="info-card" style="background: linear-gradient(135deg, #daeef3 0%, #a7c9d8 100%);">
+                    <h3><span class="info-card-icon">📱</span> Application Mobile</h3>
+                    <p>Application Android pour saisie terrain en temps réel avec géolocalisation automatique (Android 8.0 minimum)</p>
+                </div>
+            </div>
+            
+            <h3>🔬 Protocoles de saisie</h3>
+            <p>Plusieurs protocoles standardisés sont disponibles selon votre domaine d'expertise :</p>
+            
+            <div style="margin: 25px 0;">
+                <div class="highlight-box">
+                    <h4>📋 Protocoles disponibles</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;"><strong>Occtax :</strong> Observation occasionnelle (tout taxon)</li>
+                        <li style="margin-bottom: 8px;"><strong>Phytosociologie :</strong> Relevés de végétation</li>
+                        <li style="margin-bottom: 8px;"><strong>Protocoles standardisés :</strong> STOC EPS, STERF, POP Reptiles, etc.</li>
+                        <li style="margin-bottom: 8px;"><strong>Suivis personnalisés :</strong> Protocoles spécifiques par structure</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 35px;">
+                <a href="#" class="cta-button">Accéder à l'outil de saisie</a>
+            </div>
+        </section>
+        
+        <!-- Section Validation -->
+        <section id="validation" class="block">
+            <h2>✓ Validation des Données</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                La validation est une étape cruciale qui garantit la fiabilité des données diffusées. Ce processus collaboratif implique un réseau d'experts naturalistes reconnus.
+            </p>
+            
+            <h3>👥 Qui valide vos données ?</h3>
+            <ul class="icon-list">
+                <li><strong>Experts taxonomiques :</strong> Spécialistes reconnus pour chaque groupe (oiseaux, plantes, insectes...)</li>
+                <li><strong>Structures partenaires :</strong> Associations naturalistes et conservatoires régionaux</li>
+                <li><strong>Référents régionaux :</strong> Coordinateurs par groupe taxonomique</li>
+            </ul>
+            
+            <div class="highlight-box" style="margin: 30px 0;">
+                <h3>🔍 Le Processus de Validation</h3>
+                <ol style="padding-left: 25px;">
+                    <li style="margin-bottom: 12px;"><strong>Contrôle automatique :</strong> Vérification de cohérence (date, géolocalisation, période d'observation)</li>
+                    <li style="margin-bottom: 12px;"><strong>Alertes automatiques :</strong> Signal si l'observation sort des critères habituels (hors aire de répartition, hors période)</li>
+                    <li style="margin-bottom: 12px;"><strong>Validation experte :</strong> Examen par un spécialiste du groupe taxonomique</li>
+                    <li style="margin-bottom: 12px;"><strong>Échanges si nécessaire :</strong> L'expert peut demander des précisions ou des photos complémentaires</li>
+                </ol>
+            </div>
+            
+            <h3>🔔 Système d'alertes</h3>
+            <p>
+                Lors de la saisie, vous pouvez recevoir une alerte si votre observation semble inhabituelle. <strong>Ce n'est pas une erreur !</strong> C'est simplement une invitation à documenter votre observation avec une photo, un enregistrement sonore ou un commentaire détaillé pour faciliter la validation.
+            </p>
+            
+            <h3>💬 Communication et discussions</h3>
+            <p>
+                Chaque observation dispose d'un onglet "Discussion" permettant les échanges entre observateurs et validateurs. Vous recevrez des notifications si un expert vous contacte pour obtenir des précisions sur vos observations.
+            </p>
+        </section>
+        
+        <!-- Section Diffusion (anciennement Consultation) -->
+        <section id="diffusion" class="block">
+            <h2>🌐 Diffusion et Consultation des Données</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                Une fois validées, les données sont diffusées via plusieurs canaux pour répondre aux besoins de consultation publique, d'analyse scientifique et de transmission aux dispositifs nationaux.
+            </p>
+            
+            <h3>🗺️ L'Atlas Biodiv'Occitanie (Consultation Publique)</h3>
+            <div class="highlight-box">
+                <p style="margin-bottom: 15px;">
+                    L'atlas Biodiv'Occitanie est le <strong>portail public</strong> de visualisation des données naturalistes régionales. Accessible à tous, il propose :
+                </p>
+                <ul style="padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>Fiches espèces</strong> avec cartes de répartition et graphiques de phénologie</li>
+                    <li style="margin-bottom: 8px;"><strong>Fiches communales</strong> avec inventaire de la biodiversité locale</li>
+                    <li style="margin-bottom: 8px;"><strong>Visualisation par mailles</strong> pour protéger les données sensibles</li>
+                    <li style="margin-bottom: 8px;"><strong>Statistiques</strong> et synthèses régionales</li>
+                </ul>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://biodiv-occitanie.fr/" target="_blank" class="cta-button">Visiter l'Atlas Biodiv'Occitanie</a>
+                </div>
+            </div>
+            
+            <h3>🔎 Le Module Synthèse de GeoNat'Occitanie (Adhérents)</h3>
+            <p style="margin-bottom: 20px;">
+                Les structures adhérentes ont accès à des <strong>fonctionnalités avancées</strong> via le module Synthèse de GeoNat'Occitanie :
+            </p>
+            
+            <div class="card-grid">
+                <div class="info-card">
+                    <h3><span class="info-card-icon">🎯</span> Recherche Avancée</h3>
+                    <p>Filtres multiples : espèce, date, lieu, observateur, statut de validation, etc.</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="info-card-icon">🗺️</span> Cartographie Précise</h3>
+                    <p>Visualisation des localisations exactes avec fonds de carte variés</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="info-card-icon">📊</span> Export de Données</h3>
+                    <p>Téléchargement au format CSV, GeoJSON pour analyses approfondies</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="info-card-icon">📌</span> Épinglage</h3>
+                    <p>Marquage d'observations pour retrouver facilement des données importantes</p>
+                </div>
+            </div>
+
+            <h3>📡 Transmission au SINP</h3>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3>📊 Le SINP : Système d'Information sur la Nature et les Paysages</h3>
+                <p style="margin-bottom: 15px;">
+                    Le SINP est un dispositif collaboratif et pérenne qui structure les données sur la nature et les paysages pour les rendre accessibles à tous les niveaux (régional, national, européen).
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>Toutes les données saisies dans Biodiv'Occitanie sont immédiatement transmises au SINP régional</strong>, qui les fait ensuite remonter au niveau national. Cette transmission automatique garantit que vos observations contribuent aux politiques publiques de protection de la biodiversité.
+                </p>
+                <div class="flow-diagram" style="margin-top: 25px;">
+                    <div style="text-align: center; padding: 15px; background: #f7f8f4; border-radius: 8px; flex: 1; min-width: 150px;">
+                        <div style="font-size: 32px;">💾</div>
+                        <strong>Biodiv'Occitanie</strong>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div style="text-align: center; padding: 15px; background: #f7f8f4; border-radius: 8px; flex: 1; min-width: 150px;">
+                        <div style="font-size: 32px;">🗺️</div>
+                        <strong>SINP Régional</strong>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div style="text-align: center; padding: 15px; background: #f7f8f4; border-radius: 8px; flex: 1; min-width: 150px;">
+                        <div style="font-size: 32px;">🇫🇷</div>
+                        <strong>SINP National</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>🔒 Protection des Données Sensibles</h3>
+            <p>
+                Les observations d'espèces menacées ou de sites sensibles (nidification, reproduction) sont automatiquement floutées géographiquement pour le grand public dans l'atlas. Seuls les contributeurs, validateurs et structures partenaires accèdent aux localisations précises pour leurs travaux de conservation.
+            </p>
+        </section>
+        
+        <!-- Section Partenaires -->
+        <section id="partenaires" class="block">
+            <h2>🤝 Partenaires et Gouvernance</h2>
+            
+            <h3>OC'Nat : Union des Associations Naturalistes</h3>
+            <p style="margin-bottom: 25px;">
+                Biodiv'Occitanie est porté par <strong>OC'Nat</strong>, l'union régionale des associations naturalistes d'Occitanie. OC'Nat fédère les structures naturalistes pour mutualiser les outils et les connaissances sur la biodiversité régionale.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>📋 Charte d'Utilisation</h3>
+                <p>
+                    L'utilisation de Biodiv'Occitanie est encadrée par une charte définissant les droits et devoirs des contributeurs, les règles de diffusion des données, et les engagements des structures co-administratrices.
+                </p>
+            </div>
+            
+            <h3>🏛️ Structures Co-Administratrices</h3>
+            <p style="margin-bottom: 20px;">
+                Plusieurs structures partenaires participent à la co-administration et à la gouvernance de l'outil :
+            </p>
+            
+            <div class="partners-grid">
+                <div class="partner-box">
+                    <div style="font-size: 40px; margin-bottom: 10px;">🏞️</div>
+                    <strong>Conservatoires<br>d'Espaces Naturels</strong>
+                </div>
+                <div class="partner-box">
+                    <div style="font-size: 40px; margin-bottom: 10px;">🦋</div>
+                    <strong>Associations<br>Naturalistes</strong>
+                </div>
+                <div class="partner-box">
+                    <div style="font-size: 40px; margin-bottom: 10px;">🏛️</div>
+                    <strong>Collectivités<br>Territoriales</strong>
+                </div>
+                <div class="partner-box">
+                    <div style="font-size: 40px; margin-bottom: 10px;">🔬</div>
+                    <strong>Organismes de<br>Recherche</strong>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Outils -->
+        <section id="outils" class="block">
+            <h2>🛠️ Les Outils de l'Écosystème</h2>
+            
+            <div class="card-grid">
+                <div class="info-card" style="background: linear-gradient(135deg, #095773 0%, #0a6d8f 100%); color: white;">
+                    <h3 style="color: white;"><span class="info-card-icon">💻</span> GeoNature</h3>
+                    <p>Logiciel libre de saisie et gestion de données naturalistes développé par le Parc National des Écrins</p>
+                </div>
+                
+                <div class="info-card" style="background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); color: white;">
+                    <h3 style="color: white;"><span class="info-card-icon">🗺️</span> GeoNature-Atlas</h3>
+                    <p>Outil de visualisation et de diffusion des données sous forme d'atlas dynamique en ligne</p>
+                </div>
+                
+                <div class="info-card" style="background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); color: white;">
+                    <h3 style="color: white;"><span class="info-card-icon">📱</span> Application Mobile</h3>
+                    <p>Application Android pour saisie terrain avec géolocalisation GPS et mode hors-ligne</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3>🔓 Logiciels Libres et Open Source</h3>
+                <p>
+                    GeoNature est un logiciel libre et open source, développé de manière collaborative par une communauté grandissante de contributeurs (Parcs Nationaux, Conservatoires, associations...). Cette approche garantit la pérennité, l'adaptabilité et la mutualisation des développements entre structures.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section CTA finale -->
+        <section class="block cta-section">
+            <h2>Prêt à Contribuer ?</h2>
+            <p style="font-size: 1.2em; margin: 25px 0;">
+                Rejoignez la communauté des contributeurs et participez à la connaissance de la biodiversité en Occitanie !
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                <a href="#" style="padding: 15px 30px; background: white; color: #095773; text-decoration: none; border-radius: 30px; font-weight: 600;">Créer un compte</a>
+                <a href="https://biodiv-occitanie.fr/" target="_blank" class="btn-secondary">Visiter l'Atlas</a>
+            </div>
+        </section>
+    
+       </div>
+     </div>
+<!-- -->
+{% endblock %}

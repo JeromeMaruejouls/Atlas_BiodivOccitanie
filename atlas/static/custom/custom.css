@@ -173,3 +173,93 @@ body {
     color: white;
     text-decoration: none;
   }
+
+
+
+
+
+
+
+
+
+/******************************/
+/*   STYLE PAGE PRESENTATION  */
+/******************************/
+
+.presentation-page {
+    padding: 30px 0;
+}
+
+/* Bloc généraux */
+.block {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Titre principal */
+.section-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #095773;
+}
+
+/* Image header */
+.header-image {
+    display: block;
+    margin: auto;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Sous-titres */
+.block h2,
+.block h3 {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 15px;
+    color: #095773;
+}
+
+.block h2 {
+    font-size: 32px;
+}
+
+.block h3 {
+    font-size: 24px;
+}
+
+/* Listes */
+.styled-list li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.two-columns {
+    columns: 2;
+    column-gap: 40px;
+}
+
+/* Encadrés membres fondateurs */
+.info-block {
+    background: #f7f8f4;
+    border-left: 4px solid var(--main-color);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+/* Lien bouton */
+.btn-link {
+    font-weight: bold;
+    color: #095773;
+}
+
+.btn-link:hover {
+    color: var(--main-color);
+    text-decoration: underline;
+}
